@@ -23,11 +23,20 @@ class Welcome extends CI_Controller {
 		//$this->load->view('welcome_message');
 		//$this->load->view('main.html');
 		
-		$this->load->view('main_begin.html');
-		$this->load->view('main_body_header.html');
-		$this->load->view('main_body.html');
-		$this->load->view('main_body_footer.html');
-		$this->load->view('main_end.html');
-		
+		echo '<!DOCTYPE html>';
+		echo '<html>';
+		echo 	'<head>';
+		$this->load->view('main_00_head.html');
+		echo 	'</head>';
+		echo 	'<body class="skin-blue">';
+		echo 		'<div class="wrapper">';
+		$this->load->view('main_10_body_main-header.html');
+		$this->load->view('main_20_body_main-sidebar.html');
+		$this->load->view('main_30_body_main-content.html');
+		$this->load->view('main_80_body_main-footer.html');
+		$this->load->view('main_90_end_js.html');
+		echo		'</div><!-- ./wrapper -->';
+		echo	'</body>';
+		echo '</html>';
 	}
 }

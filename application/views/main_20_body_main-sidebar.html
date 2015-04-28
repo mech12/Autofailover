@@ -1,0 +1,76 @@
+
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+	<!-- sidebar: style can be found in sidebar.less -->
+	<section class="sidebar">
+		<!-- sidebar menu: : style can be found in sidebar.less -->
+		<ul class="sidebar-menu">
+			<li class="header">Type</li>
+			<form action="#" method="get" class="sidebar-form">
+				<select class="form-control">
+					<option>Shared</option>
+					<option>Mirroed</option>
+				</select>
+			</form>
+		</ul>
+		<ul class="sidebar-menu">
+			<li class="header">Server</li>
+			<form action="#" method="get" class="sidebar-form">
+				<!-- text input -->
+				<label>Server 1</label>
+				<input type="text" class="form-control" placeholder="Enter HostName" />
+				<label>Server 2</label>
+				<input type="text" class="form-control" placeholder="Enter HostName"/>
+			</form>
+		</ul>
+		
+		<ul class="sidebar-menu">
+			<li class="header">Virtual IP</li>
+			<!-- IP mask -->
+			<form action="#" method="get" class="sidebar-form">
+				
+				<div class="form-group">
+					<label>VIP_1:</label>
+					<div class="input-group">
+						<div class="input-group-addon">
+							<i class="fa fa-laptop"></i>
+						</div>
+						<input type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask value='192.168.1.1'/>
+					</div><!-- /.input group -->
+					
+					<label>VIP_2:</label>
+					<div class="input-group">
+						<div class="input-group-addon">
+							<i class="fa fa-laptop"></i>
+						</div>
+						<input type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask value='192.168.1.2'/>
+					</div><!-- /.input group -->
+				</form>
+			</li>
+		</ul>
+		
+		<ul class="sidebar-menu">
+			<li class="header">Application</li>
+			<form action="#" method="get" class="sidebar-form">
+				<!-- text input -->
+				<label>DB</label>
+				<input type="text" class="form-control" placeholder="Enter IP:Port" />
+				<label>App</label>
+				<input type="text" class="form-control" placeholder="Enter Exe name"/>
+			</form>
+		</ul>
+		
+		<ul class="sidebar-menu">
+			<li class="header">DISK</li>
+			<form action="#" method="get" class="sidebar-form">
+				<!-- text input -->
+				<label>Disk 1</label>
+				<input type="text" class="form-control" placeholder="Path" />
+				<label>Disk 2</label>
+				<input type="text" class="form-control" placeholder="Path"/>
+			</form>
+		</ul>
+		
+	</section>
+	<!-- /.sidebar -->
+</aside>
