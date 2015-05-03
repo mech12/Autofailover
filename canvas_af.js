@@ -2,7 +2,9 @@ var g_G = {
 	canvas:null,
 	context:null,
 	canvasDiv:null,
+	loaded_img : 0,
 	img_list : [],
+	line_list : [],
 	find_img : function(name)
 	{
 		var tot = img_list.length;
@@ -32,36 +34,11 @@ function Draw_Main(canvasDiv_name)
 	//화면 크기.
 	calc_backgroud_size(g_G);
 	
-	g_G.img_list =
-	[
-	{
-		name : 'j_server',
-		src : "img/j_server.png",
-		
-		draw_list : [
-			{is_draw : true , x : 25,y : 50,w : 80 , h : 100,},
-			{is_draw : true , x : 75,y : 50,w : 80 , h : 100,},
-		]
-	},
-	{
-		name : 'j_db2',
-		src : "img/j_db2.png",
-		
-		draw_list : [
-			{is_draw : true , x : 25,y : 10,w : 100 , h : 100,},
-			{is_draw : true , x : 75,y : 10,w : 100 , h : 100,},
-		]
-	},
-	{
-		name : 'j_hdd',
-		src : "img/j_hdd.png",
-		
-		draw_list : [
-			{is_draw : true , x : 25,y : 10,w : 100 , h : 100,},
-			{is_draw : true , x : 75,y : 10,w : 100 , h : 100,},
-		]
-	},	
-	];
+	
+	g_G.img_list = get_shared1_image_list(g_G);
+	g_G.line_list = get_shared1_line_list(g_G);
+	
+	//g_G.img_list = get_img_shared_bg(g_G);
 	
 	g_G.img_list.forEach(function(img)
 	{
@@ -69,3 +46,5 @@ function Draw_Main(canvasDiv_name)
 	});
 	
 }
+
+
