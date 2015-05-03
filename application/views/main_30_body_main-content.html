@@ -9,15 +9,19 @@
 	</section>
 	
 	<!-- Main content -->
-	<section class="my_content" >
+	<section class="my_content" id='_my_content'>
+		<div id="canvasDiv" style="border:1px solid blue;height:600px">
+		</div>
+		
 		<script type="text/javascript"> 
 			
 			$(document).ready(function() {
-				prepareCanvas('canvasDiv');
+				//prepareCanvas('canvasDiv');
+
+				Draw_Main('canvasDiv');
+
 			});
 			
 		</script>
-		<div id="canvasDiv">
-		</div>
 	</section><!-- /.content -->
 </div><!-- /.content-wrapper -->

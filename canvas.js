@@ -77,13 +77,6 @@ var g_curLoadResNum = 0;
 /**
 * Calls the redraw function after all neccessary resources are loaded.
 */
-function resourceLoaded()
-{
-	if(++g_curLoadResNum >= g_totalLoadResources){
-		redraw();
-	}
-}
-
 
 /**
 * Creates a canvas element, loads images, adds events, and draws the canvas for the first time.
@@ -393,6 +386,16 @@ function calc_radius(currSize ) {
     }
     return radius;
 }
+
+
+function resourceLoaded()
+{
+	if(++g_curLoadResNum >= g_totalLoadResources){
+		redraw();
+	}
+}
+
+
 /**
 * Redraws the canvas.
 */
