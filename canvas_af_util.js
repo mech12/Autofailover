@@ -113,6 +113,14 @@ function main_redraw(g_G)
 	//draw_box (g_G ,10, 10, 20 ,20 ,'#333333');
 	//draw_line(g_G, 10, 30, 50, 50 ,'white' , 5);
 	
+	g_G.context.lineWidth=1;
+	g_G.context.fillStyle="#CC00FF";
+	g_G.context.lineStyle="#ffff00";
+	g_G.context.font="18px sans-serif";
+	g_G.context.fillText("Fill Text, 18px, sans-serif", 20, 20);
+
+
+	
 }
 
 
