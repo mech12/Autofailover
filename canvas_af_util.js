@@ -21,8 +21,8 @@ function jY(g_G,  y ,h )
 
 function drawImageV(g_G, Image , x, y , w, h)
 {
-	x = jX(g_G,  x ,w );
-	y = jY(g_G,  y , h);
+	x = jX(g_G,  x , w );
+	y = jY(g_G,  y , h );
 	g_G.context.drawImage(Image, x,y ,w,h );
 }
 
@@ -92,6 +92,28 @@ function draw_lineV(g_G, x, y, x2, y2 , strokeStyle , width)
 	draw_line(g_G, x, y, x2, y2 , strokeStyle , width);
 }
 
+function getPosition(element) {
+    var xPosition = 0;
+    var yPosition = 0;
+  
+    while(element) {
+        xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+        yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+        element = element.offsetParent;
+    }
+    return { x: xPosition, y: yPosition };
+}
+
+//해당 요소를 100 x 100 가상화면에서 이동시킴.
+function element_movetoV(g_G,id,vx,vy)
+{
+	var po = getPosition(g_G.canvasDiv);
+	var x = jX(g_G,  vx , 0 ) + po.x;
+	var y = jY(g_G,  vy , 0 ) + po.y;
+	
+	$(id).css('left',x).css('top',y);
+}
+
 function main_redraw(g_G)
 {
 	calc_backgroud_size(g_G);
@@ -110,15 +132,23 @@ function main_redraw(g_G)
 		});
 	});
 	
+	var po = getPosition(g_G.canvasDiv);
+	console.log('g_G.canvasDiv.x = ' ,po.x );
+	console.log('g_G.canvasDiv.y = ' ,po.y );
+
+	element_movetoV(g_G,'#text_server1',25, 20);
+	//$('#text_server1').css('left',245).css('top',107);
+	
 	//draw_box (g_G ,10, 10, 20 ,20 ,'#333333');
 	//draw_line(g_G, 10, 30, 50, 50 ,'white' , 5);
 	
+	/*
 	g_G.context.lineWidth=1;
 	g_G.context.fillStyle="#CC00FF";
 	g_G.context.lineStyle="#ffff00";
 	g_G.context.font="18px sans-serif";
 	g_G.context.fillText("Fill Text, 18px, sans-serif", 20, 20);
-
+	*/
 
 	
 }
