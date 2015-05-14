@@ -1,0 +1,12 @@
+if exist %ORACLE_HOME%\ODP.NET\Bin\2.x\OraProvCfg.exe (
+%ORACLE_HOME%\ODP.NET\Bin\2.x\OraProvCfg.exe /action:config /product:odp /frameworkversion:v2.0.50727 /productversion:2.112.2.0
+%ORACLE_HOME%\ODP.NET\Bin\2.x\OraProvCfg.exe /action:register /product:odp /component:perfcounter /providerpath:%ORACLE_HOME%\ODP.NET\Bin\2.x\Oracle.DataAccess.dll
+)
+
+
+
+
+if exist %ORACLE_HOME%\ODP.NET\Bin\4\OraProvCfg.exe (
+%ORACLE_HOME%\ODP.NET\Bin\4\OraProvCfg.exe /action:config /product:odp /frameworkversion:v4.0.30319 /productversion:4.112.2.0
+%ORACLE_HOME%\ODP.NET\Bin\4\OraProvCfg.exe /action:register /product:odp /component:perfcounter /providerpath:%ORACLE_HOME%\ODP.NET\Bin\4\Oracle.DataAccess.dll
+)

@@ -1,0 +1,3 @@
+WHENEVER SQLERROR EXIT 1
+select CURRENT_TIMESTAMP from dual;
+exit;

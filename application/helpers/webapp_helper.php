@@ -165,11 +165,13 @@ function JSON_OUTPUT($data)
 	$ci->output
 		->set_content_type('application/json')
 		->set_output(json_encode($data));
+    /*
     if(isset($data['error'])) jE($data);
     else if( !isset($data['eCmd'])) jE($data);
     else{
         jL($data['eCmd'],'T_RQ');
     }
+    */
 }
 function JSON_OUTPUT_($data)
 {

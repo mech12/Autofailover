@@ -1,0 +1,135 @@
+ 
+Configuring ODP.NET 2 
+ 
+C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\2.x\oraprovcfg.exe /action:gac /providerpath:C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\2.x\Oracle.DataAccess.dll  
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\2.x\oracle.dataaccess.dll is registered successfully in GAC.
+C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\2.x\oraprovcfg.exe /action:gac /providerpath:C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\2.x\Resources\ja\Oracle.DataAccess.resources.dll    
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\2.x\resources\ja\oracle.dataaccess.resources.dll is registered successfully in GAC.
+C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\2.x\oraprovcfg.exe /action:gac /providerpath:C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\2.x\Resources\zh-CHS\Oracle.DataAccess.resources.dll    
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\2.x\resources\zh-chs\oracle.dataaccess.resources.dll is registered successfully in GAC.
+C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\2.x\oraprovcfg.exe /action:ungac /providerpath:Policy.2.102.Oracle.DataAccess,processorArchitecture=AMD64  
+C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\2.x\oraprovcfg.exe /action:gac /providerpath:C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\PublisherPolicy\2.x\Policy.2.102.Oracle.DataAccess.dll  
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\odp.net\publisherpolicy\2.x\policy.2.102.oracle.dataaccess.dll is registered successfully in GAC.
+C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\2.x\oraprovcfg.exe /action:gac /providerpath:C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\PublisherPolicy\2.x\Policy.2.111.Oracle.DataAccess.dll  
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\odp.net\publisherpolicy\2.x\policy.2.111.oracle.dataaccess.dll is registered successfully in GAC.
+C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\2.x\oraprovcfg.exe /action:gac /providerpath:C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\PublisherPolicy\2.x\Policy.2.112.Oracle.DataAccess.dll  
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\odp.net\publisherpolicy\2.x\policy.2.112.oracle.dataaccess.dll is registered successfully in GAC.
+ 
+Configuring ASP.NET 2 
+ 
+C:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\2.x\oraprovcfg.exe /action:gac /providerpath:"C:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\2.x\Oracle.Web.dll" 
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\2.x\oracle.web.dll is registered successfully in GAC.
+C:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\2.x\oraprovcfg.exe /action:gac /providerpath:"C:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\2.x\Resources\ja\Oracle.Web.resources.dll" 
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\2.x\resources\ja\oracle.web.resources.dll is registered successfully in GAC.
+C:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\2.x\oraprovcfg.exe /action:gac /providerpath:"C:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\2.x\Resources\zh-CHS\Oracle.Web.resources.dll" 
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\2.x\resources\zh-chs\oracle.web.resources.dll is registered successfully in GAC.
+C:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\2.x\oraprovcfg.exe /action:gac /providerpath:"C:\oraclexe\app\oracle\product\11.2.0\server\asp.net\PublisherPolicy\2.x\Policy.2.111.Oracle.Web.dll"  
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\asp.net\publisherpolicy\2.x\policy.2.111.oracle.web.dll is registered successfully in GAC.
+C:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\2.x\oraprovcfg.exe /action:gac /providerpath:"C:\oraclexe\app\oracle\product\11.2.0\server\asp.net\PublisherPolicy\2.x\Policy.2.112.Oracle.Web.dll"  
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\asp.net\publisherpolicy\2.x\policy.2.112.oracle.web.dll is registered successfully in GAC.
+ 
+Configuring ODE.NET 2 
+ 
+C:\oraclexe\app\oracle\product\11.2.0\server\ode.net\bin\2.x\oraprovcfg.exe /action:gac /providerpath:C:\oraclexe\app\oracle\product\11.2.0\server\ode.net\bin\2.x\Oracle.Database.extensions.dll 
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\ode.net\bin\2.x\oracle.database.extensions.dll is registered successfully in GAC.
+ 
+Configuring ODP.NET 2 
+ 
+
+INFO: The following section has been added.
+<section name="oracle.dataaccess.client" type="System.Data.Common.DbProviderConfigurationHandler, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+
+
+INFO: The following element added under DbProviderFactories.
+<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />
+
+INFO: Counters registered successfully in the system.
+ 
+Configuring ASP.NET 2 
+ 
+INFO: Following entries added in GroupedProviders.xml file.
+<MembershipProvider name="OracleMembershipProvider" /><RoleProvider name="OracleRoleProvider" />
+
+INFO: Following entry added to machine.config file.
+<add name="OracleMembershipProvider" type="Oracle.Web.Security.OracleMembershipProvider, Oracle.Web, Version=2.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342" connectionStringName="OraAspNetConString" applicationName="" enablePasswordRetrieval="false" enablePasswordReset="true" requiresQuestionAndAnswer="true" requiresUniqueEmail="false" passwordFormat="Hashed" maxInvalidPasswordAttempts="5" minRequiredPasswordLength="7" minRequiredNonalphanumericCharacters="1" passwordAttemptWindow="10" passwordStrengthRegularExpression="" />
+
+INFO: Following entry added to machine.config file.
+<add name="OracleProfileProvider" type="Oracle.Web.Profile.OracleProfileProvider, Oracle.Web, Version=2.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342" connectionStringName="OraAspNetConString" applicationName="" />
+
+INFO: Following entry added to machine.config file.
+<add name="OracleRoleProvider" type="Oracle.Web.Security.OracleRoleProvider, Oracle.Web, Version=2.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342" connectionStringName="OraAspNetConString" applicationName="" />
+
+INFO: Following entry added to machine.config file.
+<add name="OracleSiteMapProvider" type="Oracle.Web.SiteMap.OracleSiteMapProvider, Oracle.Web, Version=2.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342" connectionStringName="OraAspNetConString" applicationName="" securityTrimmingEnabled="true" />
+
+INFO: Following entry added to machine.config file.
+<add name="OraclePersonalizationProvider" type="Oracle.Web.Personalization.OraclePersonalizationProvider, Oracle.Web, Version=2.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342" connectionStringName="OraAspNetConString" applicationName="" />
+
+INFO: Following entry added to machine.config file.
+<add name="OracleWebEventProvider" type="Oracle.Web.Management.OracleWebEventProvider, Oracle.Web, Version=2.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342" connectionStringName="OraAspNetConString" buffer="true" bufferMode="OracleNotification" />
+Connection string name OraAspNetConString is set successfully 
+
+ 
+Configuring ODP.NET 4 
+ 
+C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\4\oraprovcfg.exe /action:gac /providerpath:C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\4\Oracle.DataAccess.dll  
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\4\oracle.dataaccess.dll is registered successfully in GAC.
+C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\4\oraprovcfg.exe /action:gac /providerpath:C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\4\Resources\ja\Oracle.DataAccess.resources.dll 
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\4\resources\ja\oracle.dataaccess.resources.dll is registered successfully in GAC.
+C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\4\oraprovcfg.exe /action:gac /providerpath:C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\4\Resources\zh-CHS\Oracle.DataAccess.resources.dll 
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\4\resources\zh-chs\oracle.dataaccess.resources.dll is registered successfully in GAC.
+C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\4\oraprovcfg.exe /action:gac /providerpath:C:\oraclexe\app\oracle\product\11.2.0\server\odp.net\PublisherPolicy\4\Policy.4.112.Oracle.DataAccess.dll  
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\odp.net\publisherpolicy\4\policy.4.112.oracle.dataaccess.dll is registered successfully in GAC.
+ 
+Configuring ASP.NET 4 
+ 
+C:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\4\oraprovcfg.exe /action:gac /providerpath:C:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\4\Oracle.Web.dll  
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\4\oracle.web.dll is registered successfully in GAC.
+C:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\4\oraprovcfg.exe /action:gac /providerpath:C:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\4\Resources\ja\Oracle.Web.resources.dll  
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\4\resources\ja\oracle.web.resources.dll is registered successfully in GAC.
+C:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\4\oraprovcfg.exe /action:gac /providerpath:C:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\4\Resources\zh-CHS\Oracle.Web.resources.dll  
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\4\resources\zh-chs\oracle.web.resources.dll is registered successfully in GAC.
+C:\oraclexe\app\oracle\product\11.2.0\server\asp.net\bin\4\oraprovcfg.exe /action:gac /providerpath:C:\oraclexe\app\oracle\product\11.2.0\server\asp.net\PublisherPolicy\4\Policy.4.112.Oracle.Web.dll  
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\asp.net\publisherpolicy\4\policy.4.112.oracle.web.dll is registered successfully in GAC.
+ 
+Configuring ODE.NET 4 
+ 
+C:\oraclexe\app\oracle\product\11.2.0\server\ode.net\bin\4\oraprovcfg.exe /action:gac /providerpath:C:\oraclexe\app\oracle\product\11.2.0\server\ode.net\bin\4\Oracle.Database.extensions.dll  
+INFO: c:\oraclexe\app\oracle\product\11.2.0\server\ode.net\bin\4\oracle.database.extensions.dll is registered successfully in GAC.
+ 
+Configuring ODP.NET 4 
+ 
+
+INFO: The following section has been added.
+<section name="oracle.dataaccess.client" type="System.Data.Common.DbProviderConfigurationHandler, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+
+
+INFO: The following element added under DbProviderFactories.
+<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />
+
+INFO: Counters registered successfully in the system.
+ 
+Configuring ASP.NET 4 
+ 
+INFO: Following entries added in GroupedProviders.xml file.
+<MembershipProvider name="OracleMembershipProvider" /><RoleProvider name="OracleRoleProvider" />
+
+INFO: Following entry added to machine.config file.
+<add name="OracleMembershipProvider" type="Oracle.Web.Security.OracleMembershipProvider, Oracle.Web, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342" connectionStringName="OraAspNetConString" applicationName="" enablePasswordRetrieval="false" enablePasswordReset="true" requiresQuestionAndAnswer="true" requiresUniqueEmail="false" passwordFormat="Hashed" maxInvalidPasswordAttempts="5" minRequiredPasswordLength="7" minRequiredNonalphanumericCharacters="1" passwordAttemptWindow="10" passwordStrengthRegularExpression="" />
+
+INFO: Following entry added to machine.config file.
+<add name="OracleProfileProvider" type="Oracle.Web.Profile.OracleProfileProvider, Oracle.Web, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342" connectionStringName="OraAspNetConString" applicationName="" />
+
+INFO: Following entry added to machine.config file.
+<add name="OracleRoleProvider" type="Oracle.Web.Security.OracleRoleProvider, Oracle.Web, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342" connectionStringName="OraAspNetConString" applicationName="" />
+
+INFO: Following entry added to machine.config file.
+<add name="OracleSiteMapProvider" type="Oracle.Web.SiteMap.OracleSiteMapProvider, Oracle.Web, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342" connectionStringName="OraAspNetConString" applicationName="" securityTrimmingEnabled="true" />
+
+INFO: Following entry added to machine.config file.
+<add name="OraclePersonalizationProvider" type="Oracle.Web.Personalization.OraclePersonalizationProvider, Oracle.Web, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342" connectionStringName="OraAspNetConString" applicationName="" />
+
+INFO: Following entry added to machine.config file.
+<add name="OracleWebEventProvider" type="Oracle.Web.Management.OracleWebEventProvider, Oracle.Web, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342" connectionStringName="OraAspNetConString" buffer="true" bufferMode="OracleNotification" />
+Connection string name OraAspNetConString is set successfully 
+
