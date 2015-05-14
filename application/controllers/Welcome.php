@@ -48,7 +48,7 @@
 			echo '</html>';
 		}
 		
-		public function db_check1($args)
+		public function db_check($args)
 		{
 			error_reporting(E_ALL);
 			try 
