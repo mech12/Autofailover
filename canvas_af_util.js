@@ -108,8 +108,10 @@ function getPosition(element) {
 function element_movetoV(g_G,id,vx,vy)
 {
 	var po = getPosition(g_G.canvasDiv);
-	var x = jX(g_G,  vx , 0 ) + po.x;
-	var y = jY(g_G,  vy , 0 ) + po.y;
+    var w = $(id).width();
+    var h = $(id).height();
+	var x = jX(g_G,  vx , w ) + po.x;
+	var y = jY(g_G,  vy , h ) + po.y;
 	
 	$(id).css('left',x).css('top',y);
 }
@@ -136,8 +138,19 @@ function main_redraw(g_G)
 	console.log('g_G.canvasDiv.x = ' ,po.x );
 	console.log('g_G.canvasDiv.y = ' ,po.y );
 
-	element_movetoV(g_G,'#text_server1',25, 20);
-	//$('#text_server1').css('left',245).css('top',107);
+    element_movetoV(g_G,'#btn_server1',25, 80);
+    element_movetoV(g_G,'#btn_server2',75, 80);
+
+    element_movetoV(g_G,'#btn_drive1',40, 65);
+    element_movetoV(g_G,'#btn_drive2',60, 65);
+
+    element_movetoV(g_G,'#btn_vip1',25, 10);
+    element_movetoV(g_G,'#btn_vip2',75, 10);
+
+    element_movetoV(g_G,'#btn_db',25, 50);
+    element_movetoV(g_G,'#btn_app',75, 50);
+
+    //$('#text_server1').css('left',245).css('top',107);
 	
 	//draw_box (g_G ,10, 10, 20 ,20 ,'#333333');
 	//draw_line(g_G, 10, 30, 50, 50 ,'white' , 5);
