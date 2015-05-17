@@ -1,3 +1,6 @@
+
+	
+	
 function calc_backgroud_size(g_G)
 {
 	g_G.W = g_G.canvasDiv.clientWidth;
@@ -126,6 +129,8 @@ function main_redraw(g_G)
 		draw_lineV(g_G, line.x, line.y, line.x2, line.y2 ,line.color , line.width);
 	});
 
+	$('#btn_id_vip1').css('border' , '2px solid red');
+
 	g_G.img_list.forEach(function(img){
 		if(img.is_loaded== false) return;
 		img.draw_list.forEach(function(p){
@@ -137,23 +142,12 @@ function main_redraw(g_G)
 	var po = getPosition(g_G.canvasDiv);
 	console.log('g_G.canvasDiv.x = ' ,po.x );
 	console.log('g_G.canvasDiv.y = ' ,po.y );
-
-    element_movetoV(g_G,'#btn_server1',25, 80);
-    element_movetoV(g_G,'#btn_server2',75, 80);
-
-    element_movetoV(g_G,'#btn_drive1',40, 65);
-    element_movetoV(g_G,'#btn_drive2',60, 65);
-
-    element_movetoV(g_G,'#btn_vip1',25, 10);
-    element_movetoV(g_G,'#btn_vip2',75, 10);
-
-    element_movetoV(g_G,'#btn_db',25, 50);
-    element_movetoV(g_G,'#btn_app',75, 50);
-
-    //$('#text_server1').css('left',245).css('top',107);
 	
-	//draw_box (g_G ,10, 10, 20 ,20 ,'#333333');
-	//draw_line(g_G, 10, 30, 50, 50 ,'white' , 5);
+	
+	g_status_btn_list_shared.forEach( function(btn){
+		element_movetoV(g_G,btn.id,btn.x, btn.y);
+	});
+
 	
 	/*
 	g_G.context.lineWidth=1;

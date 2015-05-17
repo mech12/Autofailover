@@ -1,3 +1,27 @@
+var g_posLeft = 22;
+var g_posRight = 100 -g_posLeft;
+var g_drive_offset = 10;
+
+var g_status_btn_list_shared =
+[
+	{nic:'SV1',id:'#btn_id_server1', x:g_posLeft, y:80},
+    {nic:'SV2' ,id:'#btn_id_server2', x:g_posRight, y:80},
+
+    {nic:'DISK1' ,id:'#btn_id_disk1', x:g_posLeft+g_drive_offset, y:65},
+    {nic:'DISK2' ,id:'#btn_id_disk2', x:g_posRight-g_drive_offset, y:65},
+
+    {nic:'VIP1' ,id:'#btn_id_vip1', x:g_posLeft, y:20},
+    {nic:'VIP2' ,id:'#btn_id_vip2', x:g_posRight, y:20},
+
+    {nic:'DB' ,id:'#btn_id_db', x:g_posLeft, y:50},
+    {nic:'APP' ,id:'#btn_id_app', x:g_posRight, y:50},
+];
+
+function find_btn_info(id)
+{
+	var result = $.grep(g_status_btn_list_shared, function(e){ return e.id == id; });
+	return result[0];
+}
 
 function get_shared1_line_list(g_G)
 {

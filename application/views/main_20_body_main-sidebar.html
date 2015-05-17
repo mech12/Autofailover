@@ -7,7 +7,7 @@
 		<ul class="sidebar-menu">
 			<li class="header">Type</li>
 			<form action="#" method="get" class="sidebar-form">
-				<select class="form-control">
+				<select class="form-control" id='pannel_type'>
 					<option>Shared</option>
 					<option>Mirroed</option>
 				</select>
@@ -17,36 +17,27 @@
 			<li class="header">Server</li>
 			<form action="#" method="get" class="sidebar-form">
 				<!-- text input -->
-				<label>Server 1</label>
-				<input type="text" class="form-control" placeholder="Enter HostName" />
+				<label >Server 1</label>
+				<input id='id_server1' type="text" class="form-control" placeholder="Enter HostName" />
 				<label>Server 2</label>
-				<input type="text" class="form-control" placeholder="Enter HostName"/>
-			</form>
-		</ul>
-		
-		<ul class="sidebar-menu">
-			<li class="header">Virtual IP</li>
-			<!-- IP mask -->
-            <form action="#" method="get" class="sidebar-form">
+				<input id='id_server2' type="text" class="form-control" placeholder="Enter HostName"/>
 				
-                <div class="form-group">
-                    <label>VIP_1:</label>
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-laptop"></i>
-						</div>
-						<input type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask value='192.168.1.1'/>
-					</div><!-- /.input group -->
-					
-					<label>VIP_2:</label>
-					<div class="input-group">
-						<div class="input-group-addon">
-							<i class="fa fa-laptop"></i>
-						</div>
-						<input type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask value='192.168.1.2'/>
-					</div><!-- /.input group -->
-				</form>
-			</li>
+				<label>Virtual IP 1:</label>
+				<div class="input-group">
+					<div class="input-group-addon">
+						<i class="fa fa-laptop"></i>
+					</div>
+					<input id='id_vip1' type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask value='192.168.1.1'/>
+				</div><!-- /.input group -->
+				
+				<label>Virtual IP 2:</label>
+				<div class="input-group">
+					<div class="input-group-addon">
+						<i class="fa fa-laptop"></i>
+					</div>
+					<input  id='id_vip2' type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask value='192.168.1.2'/>
+				</div><!-- /.input group -->
+			</form>
 		</ul>
 		
 		<ul class="sidebar-menu">
@@ -54,20 +45,13 @@
 			<form action="#" method="get" class="sidebar-form">
 				<!-- text input -->
 				<label>DB</label>
-				<input type="text" class="form-control" placeholder="Enter IP:Port" />
+				<input id='id_db'  type="text" class="form-control" placeholder="Enter IP:Port" />
 				<label>App</label>
-				<input type="text" class="form-control" placeholder="Enter Exe name"/>
-			</form>
-		</ul>
-		
-		<ul class="sidebar-menu">
-			<li class="header">DISK</li>
-			<form action="#" method="get" class="sidebar-form">
+				<input id='id_app' type="text" class="form-control" placeholder="Enter Exe name"/>
 				<!-- text input -->
 				<label>Disk 1</label>
-				<input type="text" class="form-control" placeholder="Path" />
+				<input id='id_disk1' type="text" class="form-control" placeholder="Path" />
 				<label>Disk 2</label>
-				<input type="text" class="form-control" placeholder="Path"/>
 			</form>
 		</ul>
 		

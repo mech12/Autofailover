@@ -34,6 +34,8 @@
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js" type="text/javascript"></script>
 
+<link rel="stylesheet" type="text/css" href="btn/css/demo.css" />
+<link rel="stylesheet" type="text/css" href="btn/css/style5.css" />
 
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js" type="text/javascript"></script>
@@ -43,3 +45,43 @@
 <script type="text/javascript" src="canvas_af_g_G.js"></script>
 <script type="text/javascript" src="canvas_af_util.js"></script>
 <script type="text/javascript" src="canvas_af.js"></script>
+
+
+
+<script>
+	
+	$( ".sidebar-menu" ).keyup(function( event ) 
+	{
+		var t = event.target;
+		console.log(t.id, t.value  );
+		var btn_id = '#btn_'+t.id;
+		
+		var btn_info = find_btn_info(btn_id);
+		$(btn_id).val(btn_info.nic + ': ' +  t.value);
+		element_movetoV(g_G,btn_id,btn_info.x, btn_info.y);
+		
+		if(t.id =='id_server1' || t.id =='id_server2')
+		{
+			return;
+		}
+		if(t.id =='id_vip1' || t.id =='id_vip2')
+		{
+			return;
+		}
+		if(t.id =='id_disk1' || t.id =='id_disk2')
+		{
+			return;
+		}
+		if(t.id =='id_db')
+		{
+			return;
+		}
+		if(t.id =='id_app')
+		{
+			return;
+		}
+		
+		
+	});
+	
+</script>

@@ -28,6 +28,16 @@
 				return;
 			}
 			
+			
+			$this->load->view('login.html');
+		}
+		public function test()
+		{
+			echo 'ok';
+		}
+		
+		public function shared($args)
+		{
 			//$this->load->view('welcome_message');
 			//$this->load->view('main.html');
 			
@@ -45,7 +55,7 @@
 			$this->load->view('main_90_end_js.html');
 			echo		'</div><!-- ./wrapper -->';
 			echo	'</body>';
-			echo '</html>';
+			echo '</html>';		
 		}
 		
 		public function db_check($args)
