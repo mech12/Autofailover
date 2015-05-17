@@ -31,7 +31,7 @@
 			
 			$this->load->view('login.html');
 		}
-		public function test()
+		public function login()
 		{
 			echo 'ok';
 		}
