@@ -25,22 +25,19 @@ SET time_zone = "+00:00";
 --
 -- 테이블 구조 `tbl_user`
 --
-
-CREATE TABLE IF NOT EXISTS `tbl_user` (
-  `uid` int(11) NOT NULL,
-  `email` varchar(128) NOT NULL,
-  `pwd` varchar(128) NOT NULL,
-  `type` varchar(64) NOT NULL,
-  `server1` varchar(64) NOT NULL,
-  `server2` varchar(64) NOT NULL,
-  `vip1` varchar(64) NOT NULL,
-  `vip2` varchar(64) NOT NULL,
-  `db` varchar(64) NOT NULL,
-  `app` varchar(64) NOT NULL,
-  `disk1` varchar(64) NOT NULL,
-  `disk2` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+CREATE TABLE `tbl_user` (
+	`email` VARCHAR(128) NOT NULL,
+	`type` VARCHAR(64) NOT NULL DEFAULT 'Shared',
+	`server1` VARCHAR(64) NOT NULL,
+	`server2` VARCHAR(64) NOT NULL,
+	`vip1` VARCHAR(64) NOT NULL,
+	`vip2` VARCHAR(64) NOT NULL,
+	`db_type` VARCHAR(64) NOT NULL DEFAULT 'ORACLE',
+	`db` VARCHAR(64) NOT NULL DEFAULT 'SYSTEM a localhost:1521',
+	`app` VARCHAR(64) NOT NULL,
+	`disk1` VARCHAR(64) NOT NULL,
+	`disk2` VARCHAR(64) NOT NULL
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;

@@ -49,11 +49,39 @@
 
 
 <script>
+
+    window.setInterval(function(){
+        $.ajax({
+            url:'/index.php/welcome/check_status',
+            data:$('#setting_form').serialize(),
+            dataType:'json',
+            success:function(ret){
+
+                if(ret.error)
+                {
+                    $('#status').css('color','red').html(ret.error);
+                }
+                else
+                {
+                    $('#status').css('color','black').html('check_status' + JSON.stringify(ret));
+                    console.dir(ret);
+                    window.setTimeout(function(){
+                        $('#status').css('color','black').html('');
+                    }, 5000);
+                }
+            },
+            error:function(xhr , exception){
+                ajax_error(xhr, exception);
+            }
+        });
+
+    }, 5100);
+
 	
 	$( ".sidebar-menu" ).keyup(function( event ) 
 	{
 		var t = event.target;
-		console.log(t.id, t.value  );
+		//console.log(t.id, t.value  );
 		var btn_id = '#btn_'+t.id;
 		
 		var btn_info = find_btn_info(btn_id);
@@ -80,8 +108,52 @@
 		{
 			return;
 		}
-		
-		
+
 	});
-	
+
+    $('#save_setting').click(function(){
+
+        $.ajax({
+            url:'./',
+            data:$('#setting_form').serialize(),
+            dataType:'json',
+            success:function(ret){
+
+                if(ret.error)
+                {
+                    $('#status').css('color','red').html(ret.error);
+                }
+                else
+                {
+                    $('#status').css('color','black').html('save ok : ' + JSON.stringify(ret));
+                    window.setTimeout(function(){
+                        $('#status').css('color','black').html('');
+                    }, 5000);
+                }
+            },
+            error:function(xhr , exception){
+                ajax_error(xhr, exception);
+            }
+        })
+    })
+
+
+    function ajax_error(jqXHR, exception) {
+        if (jqXHR.status === 0) {
+            $('#status').css('color','red').html('Not connect.\n Verify Network.');
+        } else if (jqXHR.status == 404) {
+            $('#status').css('color','red').html('Requested page not found. [404]');
+        } else if (jqXHR.status == 500) {
+            $('#status').css('color','red').html('Internal Server Error [500].');
+        } else if (exception === 'parsererror') {
+            $('#status').css('color','red').html('Requested JSON parse failed.');
+        } else if (exception === 'timeout') {
+            $('#status').css('color','red').html('Time out error.');
+        } else if (exception === 'abort') {
+            $('#status').css('color','red').html('Ajax request aborted.');
+        } else {
+            $('#status').css('color','red').html('Uncaught Error.\n' + jqXHR.responseText);
+        }
+    }
+
 </script>

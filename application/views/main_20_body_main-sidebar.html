@@ -5,55 +5,73 @@
 	<section class="sidebar">
 		<!-- sidebar menu: : style can be found in sidebar.less -->
 		<ul class="sidebar-menu">
-			<li class="header">Type</li>
-			<form action="#" method="get" class="sidebar-form">
-				<select class="form-control" id='pannel_type'>
-					<option>Shared</option>
-					<option>Mirroed</option>
-				</select>
-			</form>
-		</ul>
-		<ul class="sidebar-menu">
-			<li class="header">Server</li>
-			<form action="#" method="get" class="sidebar-form">
+			<li class="header">Pannel Setting</li>
+			<form id='setting_form' action="#" method="get" class="sidebar-form">
+                <select name='type' class="form-control" id='pannel_type'>
+                    <?php if ($type =='Shared'): ?>
+                        <option selected>Shared</option>
+                        <option>Mirroed</option>
+                    <?php else: ?>
+                        <option>Shared</option>
+                        <option selected>Mirroed</option>
+                    <?php endif; ?>
+                </select>
 				<!-- text input -->
 				<label >Server 1</label>
-				<input id='id_server1' type="text" class="form-control" placeholder="Enter HostName" />
+				<input name='server1' id='id_server1' type="text" class="form-control"
+                       placeholder="Enter HostName" value="<?=$server1?>"/>
 				<label>Server 2</label>
-				<input id='id_server2' type="text" class="form-control" placeholder="Enter HostName"/>
-				
+				<input name='server2' id='id_server2' type="text" class="form-control"
+                       placeholder="Enter HostName" value="<?=$server2?>"/>
+
 				<label>Virtual IP 1:</label>
 				<div class="input-group">
 					<div class="input-group-addon">
 						<i class="fa fa-laptop"></i>
 					</div>
-					<input id='id_vip1' type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask value='192.168.1.1'/>
+					<input name='vip1' id='id_vip1' type="text" class="form-control"
+                           data-inputmask="'alias': 'ip'" data-mask value='<?=$vip1?>'
+                            />
 				</div><!-- /.input group -->
-				
+
 				<label>Virtual IP 2:</label>
 				<div class="input-group">
 					<div class="input-group-addon">
 						<i class="fa fa-laptop"></i>
 					</div>
-					<input  id='id_vip2' type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask value='192.168.1.2'/>
+					<input  name='vip2' id='id_vip2' type="text" class="form-control"
+                            data-inputmask="'alias': 'ip'" data-mask value='<?=$vip2?>'/>
 				</div><!-- /.input group -->
+                <!-- text input -->
+                <label>DB</label>
+                <select name='db_type' class="form-control" id='pannel_type'>
+                    <option >ORACLE</option>
+                    <!--
+                    <option >MYSQL</option>
+                    <option >MSSQL</option>
+                    -->
+                </select>
+
+                <input name='db' id='id_db'  type="text" class="form-control" placeholder="SYSTEM a localhost:1521"
+                        value="<?=$db?>"/>
+                <label>App</label>
+                <input name='app' id='id_app' type="text" class="form-control" placeholder="Enter Exe name"
+                       value="<?=$app?>" />
+                <!-- text input -->
+                <label>Disk 1</label>
+                <input name='disk1' id='id_disk1' type="text" class="form-control" placeholder="Path"
+                       value="<?=$disk1?>" />
+                <label>Disk 2</label>
+                <input name='disk2' id='id_disk2' type="text" class="form-control" placeholder="Path"
+                       value="<?=$disk2?>" />
+
 			</form>
+            <li>
+                <button id='save_setting' type="button" class="btn btn-primary btn-block btn-flat">Save Setting</button>
+            </li>
+
 		</ul>
-		
-		<ul class="sidebar-menu">
-			<li class="header">Application</li>
-			<form action="#" method="get" class="sidebar-form">
-				<!-- text input -->
-				<label>DB</label>
-				<input id='id_db'  type="text" class="form-control" placeholder="Enter IP:Port" />
-				<label>App</label>
-				<input id='id_app' type="text" class="form-control" placeholder="Enter Exe name"/>
-				<!-- text input -->
-				<label>Disk 1</label>
-				<input id='id_disk1' type="text" class="form-control" placeholder="Path" />
-				<label>Disk 2</label>
-			</form>
-		</ul>
+
 		
 	</section>
 	<!-- /.sidebar -->
