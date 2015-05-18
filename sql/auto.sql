@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-DROP TABLE `tbl_user`;
+DROP TABLE if exists  `tbl_user`;
 CREATE TABLE `tbl_user` (
 	`email` VARCHAR(128) NOT NULL,
 	`type` VARCHAR(64) NOT NULL DEFAULT 'Shared',
