@@ -21,22 +21,19 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
---
--- 테이블 구조 `tbl_user`
---
+DROP TABLE `tbl_user`;
 CREATE TABLE `tbl_user` (
 	`email` VARCHAR(128) NOT NULL,
 	`type` VARCHAR(64) NOT NULL DEFAULT 'Shared',
-	`server1` VARCHAR(64) NOT NULL,
-	`server2` VARCHAR(64) NOT NULL,
-	`vip1` VARCHAR(64) NOT NULL,
-	`vip2` VARCHAR(64) NOT NULL,
+	`server1` VARCHAR(64) NOT NULL DEFAULT 'localhost',
+	`server2` VARCHAR(64) NOT NULL DEFAULT 'localhost',
+	`vip1` VARCHAR(64) NOT NULL DEFAULT '127.0.0.1',
+	`vip2` VARCHAR(64) NOT NULL DEFAULT '127.0.0.1',
 	`db_type` VARCHAR(64) NOT NULL DEFAULT 'ORACLE',
 	`db` VARCHAR(64) NOT NULL DEFAULT 'SYSTEM a localhost:1521',
-	`app` VARCHAR(64) NOT NULL,
-	`disk1` VARCHAR(64) NOT NULL,
-	`disk2` VARCHAR(64) NOT NULL
+	`app` VARCHAR(64) NOT NULL DEFAULT 'notepad.exe',
+	`disk1` VARCHAR(64) NOT NULL DEFAULT 'c:\\\\',
+	`disk2` VARCHAR(64) NOT NULL DEFAULT 'd:\\\\'
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB

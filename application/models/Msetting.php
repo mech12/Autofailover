@@ -38,7 +38,20 @@ class Msetting extends CI_Model {
         $q = $db->where('email' ,$email )->get('tbl_user');
         if($q && $q->num_rows()!=0)
             return $q->row();
-        return null;
+		
+		$ret =array(
+		'type'=>'Shared',
+		'server1'=>'localhost',
+		'server2'=>'localhost',
+		'disk1'=>'c:\\',
+		'disk2'=>'d:\\',
+		'app'=>'nodepad.exe',
+		'db'=>'SYSTEM a localhost:1521',
+		'vip1'=>'google.co.kr',
+		'vip2'=>'127.0.0.1',
+		
+		);
+        return (Object)$ret;
     }
 
 }

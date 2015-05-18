@@ -131,7 +131,6 @@
             try
             {
                 $ret = shell_exec("db\\oracle\\check_server.bat " . $db_info);
-                //$ret = shell_exec("chdir");
                 if( strpos($ret , 'error') !== false
                     || strpos($ret , 'Error') !== false
                     || strpos($ret , 'ERROR') !== false
@@ -161,21 +160,18 @@
 
                     //$ret['db'] = $this->_db_check_oracle('SYSTEM a localhost:1521');
                     $ret['db'] = $this->_db_check_oracle($db);
-                    if($db !== 'SYSTEM a localhost:1521')
-                    {
-                        $ret['asdf'] =$db;
-                    }
                 }
                 else
                     $ret['db'] = array('error' => 'need setup');
             }
-
+	
+			$ret['server1'] = _check_ping( $arg['server1'] );
+			$ret['server2'] = _check_ping( $arg['server2'] );
+			$ret['vip1'] = _check_ping( $arg['vip1'] );
+			$ret['vip2'] = _check_ping( $arg['vip2'] );
 
             //{"type":"Mirroed","server1":"localhost","server2":"google.co.kr","vip1":"192.168.0.10","vip2":"192.168.0.11","db_type":"ORACLE","db":"SYSTEM a localhost:152","app":"notepad++.exe","disk1":"c:\\","disk2":"d:\\"
             JSON_OUTPUT($ret);
-
-
-
 
         }
 	}
