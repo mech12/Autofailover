@@ -288,17 +288,99 @@
 		$tA = microtime(true); 
 		return round((($tA - $tB) * 1000), 0)." ms"; 
 	}
-	
-	
+
+    function php_ping($host, $timeout = 1) {
+        /* ICMP ping packet with a pre-calculated checksum */
+        $package = "\x08\x00\x7d\x4b\x00\x00\x00\x00PingHost";
+        $socket  = socket_create(AF_INET, SOCK_RAW, 1);
+        socket_set_option($socket, SOL_SOCKET, SO_RCVTIMEO, array('sec' => $timeout, 'usec' => 0));
+        socket_connect($socket, $host, null);
+        $ts = microtime(true);
+        socket_send($socket, $package, strLen($package), 0);
+        return 'ok ' . $host;
+        $result = false;
+        if (socket_read($socket, 255))
+            $result = microtime(true) - $ts;
+
+        socket_close($socket);
+
+        return $result;
+    }
+
+    function _check_disk($disk)
+    {
+        exec('dir '.$disk , $ret);
+        if(count($ret)==0 ) return array('error'=>$disk);
+        return array('result'=>$disk);
+    }
+
+    function _check_process($app)
+    {
+        exec('tasklist' , $proc_list);
+        foreach($proc_list as $p)
+        {
+            if(strpos($p , $app) !== false)
+                return array('result' => $app);
+        }
+        return array('error'=>$app);
+    }
+
+
 	function _check_ping($server1)
 	{
 		if(! isset($server1) || strlen($server1)<=0) return array('error' => 'need setup');
-		
-		$r = shell_exec('ping -n 1 2>&1' . $server1);
-		return array('few1234' => $r);
-		if( strpos($r , 'TTL') === false)
-		return array('error'=>$r);
+        //$r = system('ping -n 1 2>&1' . $server1);
+        exec('ping -n 1 2>&1' . $server1 , $r);
+        $r = implode($r);
+
+        //echo ($r);
+        //echo "=======================================================================================";
+        if( strpos($r , 'TTL') === false && strpos($r , 'ms') === false)
+		return array('error'=>$server1);
 		else
-		return array('result'=>$r);
-		
+		return array('result'=>$server1);
+
 	}
+
+
+
+function _check_ping1234($server1)
+{
+    if(! isset($server1) || strlen($server1)<=0) return array('error' => 'need setup');
+
+    //$r = php_ping($server1);
+    //$r = shell_exec('ping -n 1 2>&1' . $server1);
+    $r = system('ping -n 1 2>&1' . $server1);
+    //exec('ping -n 1 2>&1' . $server1 , $r);
+    //print_r($r);
+    //echo "=======================================================================================";
+    //$r = implode($r);
+    //$r = iconv( "euckr","utf8", $r);
+    //$r = iconv("UTF-8", "euc-kr", $r);
+    print_r($r);
+    echo "=======================================================================================";
+
+    //return array('error'=>$r);
+
+    //$r = passthru('ping -n 1 2>&1' . $server1);
+    /*
+    while (@ ob_end_flush()); // end all output buffers if any
+    $proc = popen('ping -n 1 2>&1' . $server1, 'r');
+    $r ='';
+    while (!feof($proc))
+    {
+        $a = fread($proc, 4096);
+        $r = $r . $a;
+        //echo fread($proc, 4096);
+        @ flush();
+    }
+    */
+
+    if( strpos($r , 'TTL') === false && strpos($r , 'ms') === false)
+        return array('error'=>$r);
+    else
+        return array('result'=>$r);
+
+}
+
+

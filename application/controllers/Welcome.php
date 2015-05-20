@@ -164,6 +164,11 @@
                 else
                     $ret['db'] = array('error' => 'need setup');
             }
+
+            $ret['disk1'] = _check_disk($arg['disk1']);
+            $ret['disk2'] = _check_disk($arg['disk2']);
+
+            $ret['app'] = _check_process($arg['app']);
 	
 			$ret['server1'] = _check_ping( $arg['server1'] );
 			$ret['server2'] = _check_ping( $arg['server2'] );
