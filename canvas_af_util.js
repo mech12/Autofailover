@@ -130,6 +130,7 @@ function main_redraw(g_G)
 	});
 
 	$('#btn_id_vip1').css('border' , '2px solid red');
+	$('#btn_id_vip2').css('border' , '');
 
 	g_G.img_list.forEach(function(img){
 		if(img.is_loaded== false) return;

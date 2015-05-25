@@ -49,6 +49,25 @@
 
 
 <script>
+	function change_btn_status(id_name,ret)
+	{
+		if(ret[id_name]['error'] == null)
+			$('#btn_id_' + id_name).css('border' , '');
+		else
+			$('#btn_id_' + id_name).css('border' , '2px solid red');
+	}
+	
+	function update_ui_status(ret)
+	{
+		change_btn_status('db' , ret);
+		change_btn_status('app' , ret);
+		change_btn_status('vip1' , ret);
+		change_btn_status('vip2' , ret);
+		change_btn_status('disk1' , ret);
+		change_btn_status('disk2' , ret);
+		change_btn_status('server1' , ret);
+		change_btn_status('server2' , ret);
+	}
 
     window.setInterval(function(){
         $.ajax({
@@ -63,6 +82,7 @@
                 }
                 else
                 {
+					update_ui_status(ret);
                     $('#status').css('color','black').html('check_status' + JSON.stringify(ret));
                     console.dir(ret);
                     window.setTimeout(function(){
@@ -83,7 +103,6 @@
 		var t = event.target;
 		//console.log(t.id, t.value  );
 		var btn_id = '#btn_'+t.id;
-		
 		var btn_info = find_btn_info(btn_id);
 		$(btn_id).val(btn_info.nic + ': ' +  t.value);
 		element_movetoV(g_G,btn_id,btn_info.x, btn_info.y);
