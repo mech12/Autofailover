@@ -78,7 +78,7 @@
         
         }
 
-		public function Mirroed($args)
+		public function Mirroed($tbl_user)
         {
 
             echo '<!DOCTYPE html>';
@@ -89,15 +89,15 @@
             echo 	'<body class="skin-blue">';
             echo 		'<div class="wrapper">';
             $this->load->view('main_10_body_main-header.html');
-            $this->load->view('main_20_body_main-sidebar.html',$args);
-            $this->load->view('main_30_body_main-content.html',$args);
+            $this->load->view('main_20_body_main-sidebar.html',$tbl_user);
+            $this->load->view('main_30_body_main-content.html',$tbl_user);
             $this->load->view('main_80_body_main-footer.html');
             $this->load->view('main_90_end_js.html');
             echo		'</div><!-- ./wrapper -->';
             echo	'</body>';
             echo '</html>';
         }
-		public function Shared($args)
+		public function Shared($tbl_user)
 		{
 			//$this->load->view('welcome_message');
 			//$this->load->view('main.html');
@@ -110,8 +110,8 @@
 			echo 	'<body class="skin-blue">';
 			echo 		'<div class="wrapper">';
 			$this->load->view('main_10_body_main-header.html');
-			$this->load->view('main_20_body_main-sidebar.html' ,$args);
-			$this->load->view('main_30_body_main-content.html',$args);
+			$this->load->view('main_20_body_main-sidebar.html' ,$tbl_user);
+			$this->load->view('main_30_body_main-content.html',$tbl_user);
 			$this->load->view('main_80_body_main-footer.html');
 			$this->load->view('main_90_end_js.html');
 			echo		'</div><!-- ./wrapper -->';

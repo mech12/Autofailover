@@ -17,8 +17,10 @@ var g_G = {
 };
 var g_outlineImage = new Image();
 
-function Draw_Main(canvasDiv_name)
+function Draw_Main(canvasDiv_name,type)
 {
+	if(type=='Mirrored') return;
+	//console.log('type ',type);
 	
 	g_G.canvasDiv = document.getElementById(canvasDiv_name),
 	g_G.canvas = document.createElement('canvas');

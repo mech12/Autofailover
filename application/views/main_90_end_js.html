@@ -83,8 +83,8 @@
                 else
                 {
 					update_ui_status(ret);
-                    $('#status').css('color','black').html('check_status' + JSON.stringify(ret));
-                    console.dir(ret);
+                    //$('#status').css('color','black').html('check_status' + JSON.stringify(ret));
+                    //console.dir(ret);
                     window.setTimeout(function(){
                         $('#status').css('color','black').html('');
                     }, 5000);
@@ -104,7 +104,7 @@
 		//console.log(t.id, t.value  );
 		var btn_id = '#btn_'+t.id;
 		var btn_info = find_btn_info(btn_id);
-		$(btn_id).val(btn_info.nic + ': ' +  t.value);
+		$(btn_id).val('[' +btn_info.nic + '] ' +  t.value);
 		element_movetoV(g_G,btn_id,btn_info.x, btn_info.y);
 		
 		if(t.id =='id_server1' || t.id =='id_server2')
