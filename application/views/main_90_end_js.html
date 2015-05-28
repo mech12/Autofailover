@@ -51,10 +51,19 @@
 <script>
 	function change_btn_status(id_name,ret)
 	{
+		var btn_id = '#btn_id_' + id_name;
+		var btn_info = find_btn_info(btn_id);
+		//$(btn_id).val('[' +btn_info.nic + '] ' +  t.value);
+		//$(btn_id).val(btn_info.nic + '' );
+	
 		if(ret[id_name]['error'] == null)
-			$('#btn_id_' + id_name).css('border' , '');
+			$(btn_id).css('border' , '')
+			.css('background-color','#399630')
+			.attr('value',btn_info.nic + ' : OK');
 		else
-			$('#btn_id_' + id_name).css('border' , '2px solid red');
+			$(btn_id).css('border' , '2px solid red')
+			.css('background-color','#0f0f0f')
+			.attr('value',btn_info.nic + ' : FAIL');
 	}
 	
 	function update_ui_status(ret)
@@ -87,7 +96,7 @@
                     //console.dir(ret);
                     window.setTimeout(function(){
                         $('#status').css('color','black').html('');
-                    }, 5000);
+                    }, 3500);
                 }
             },
             error:function(xhr , exception){
@@ -104,7 +113,8 @@
 		//console.log(t.id, t.value  );
 		var btn_id = '#btn_'+t.id;
 		var btn_info = find_btn_info(btn_id);
-		$(btn_id).val('[' +btn_info.nic + '] ' +  t.value);
+		//$(btn_id).val('[' +btn_info.nic + '] ' +  t.value);
+		$(btn_id).val(btn_info.nic + ' : unknown');
 		element_movetoV(g_G,btn_id,btn_info.x, btn_info.y);
 		
 		if(t.id =='id_server1' || t.id =='id_server2')

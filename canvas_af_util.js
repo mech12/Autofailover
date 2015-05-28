@@ -129,8 +129,8 @@ function main_redraw(g_G)
 		draw_lineV(g_G, line.x, line.y, line.x2, line.y2 ,line.color , line.width);
 	});
 
-	$('#btn_id_vip1').css('border' , '2px solid red');
-	$('#btn_id_vip2').css('border' , '');
+	//$('#btn_id_vip1').css('border' , '2px solid red');
+	//$('#btn_id_vip2').css('border' , '');
 
 	g_G.img_list.forEach(function(img){
 		if(img.is_loaded== false) return;
@@ -141,8 +141,8 @@ function main_redraw(g_G)
 	});
 	
 	var po = getPosition(g_G.canvasDiv);
-	console.log('g_G.canvasDiv.x = ' ,po.x );
-	console.log('g_G.canvasDiv.y = ' ,po.y );
+	//console.log('g_G.canvasDiv.x = ' ,po.x );
+	//console.log('g_G.canvasDiv.y = ' ,po.y );
 	
 	
 	g_status_btn_list_shared.forEach( function(btn){
