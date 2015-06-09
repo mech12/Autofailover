@@ -83,31 +83,39 @@
 	}
 
     window.setInterval(function(){
-        $.ajax({
-            url:'/index.php/welcome/check_status',
-            data:$('#setting_form').serialize(),
-            dataType:'json',
-            success:function(ret){
 
-                if(ret.error)
-                {
-                    $('#status').css('color','red').html(ret.error);
+        function jSetInterval(server_num)
+        {
+            var id = '#id_server' + server_num;
+            server_url = $(id).attr('value');
+
+            $.ajax({
+                url: 'http://' + server_url + '/index.php/welcome/check_status',
+                data:$('#setting_form').serialize(),
+                dataType:'json',
+                success:function(ret){
+                    if(ret.error)
+                    {
+                        $('#status').css('color','red').html(ret.error);
+                    }
+                    else
+                    {
+                        //console.log(JSON.stringify(ret));
+                        update_ui_status(ret,server_num);
+                        //$('#status').css('color','black').html('check_status' + JSON.stringify(ret));
+                        //console.dir(ret);
+                        window.setTimeout(function(){
+                            $('#status').css('color','black').html('');
+                        }, 3500);
+                    }
+                },
+                error:function(xhr , exception){
+                    ajax_error(xhr, exception);
                 }
-                else
-                {
-                    console.log(JSON.stringify(ret));
-					update_ui_status(ret,1);
-                    //$('#status').css('color','black').html('check_status' + JSON.stringify(ret));
-                    //console.dir(ret);
-                    window.setTimeout(function(){
-                        $('#status').css('color','black').html('');
-                    }, 3500);
-                }
-            },
-            error:function(xhr , exception){
-                ajax_error(xhr, exception);
-            }
-        });
+            });
+        }
+        jSetInterval(1);
+        jSetInterval(2);
 
     }, 5100);
 
@@ -116,12 +124,17 @@
 	{
 		var t = event.target;
 		//console.log(t.id, t.value  );
-		var btn_id = '#btn_'+t.id + '_1';
-		var btn_info = find_btn_info(btn_id);
-		//$(btn_id).val('[' +btn_info.nic + '] ' +  t.value);
-		$(btn_id).val(btn_info.nic + ' : unknown');
-		element_movetoV(g_G,btn_id,btn_info.x, btn_info.y);
-		
+        function jUpdate_keyup(t ,server_num)
+        {
+            var btn_id = '#btn_'+t.id + '-' + server_num;
+            var btn_info = find_btn_info(btn_id);
+            //$(btn_id).val('[' +btn_info.nic + '] ' +  t.value);
+            $(btn_id).val(btn_info.nic + ' : ??');
+            element_movetoV(g_G,btn_id,btn_info.x, btn_info.y);
+        }
+        jUpdate_keyup(t ,1);
+        jUpdate_keyup(t ,2);
+
 		if(t.id =='id_server1' || t.id =='id_server2')
 		{
 			return;
@@ -147,28 +160,41 @@
 
     $('#save_setting').click(function(){
 
-        $.ajax({
-            url:'./',
-            data:$('#setting_form').serialize(),
-            dataType:'json',
-            success:function(ret){
-                if(ret.error)
-                {
-                    $('#status').css('color','red').html(ret.error);
+        function jSave_setting(server_num)
+        {
+            var id = '#id_server' + server_num;
+            var server_url = $(id).val(); //$(id).attr('value');
+
+            $.ajax({
+                url:'http://' + server_url + '/',
+                data:$('#setting_form').serialize(),
+                dataType: 'json' ,
+                //crossDomain : true,
+
+                success:function(ret){
+                    if(ret.error)
+                    {
+                        $('#status').css('color','red').html(ret.error);
+                    }
+                    else
+                    {
+                        console.log(JSON.stringify(ret));
+                        $('#status').css('color','black').html(id + ' save ok : ' + JSON.stringify(ret));
+                        window.setTimeout(function(){
+                            $('#status').css('color','black').html('');
+                        }, 5000);
+                    }
+                },
+                error:function(xhr , exception){
+                    ajax_error(xhr, exception);
                 }
-                else
-                {
-                    console.log(JSON.stringify(ret));
-                    $('#status').css('color','black').html('save ok : ' + JSON.stringify(ret));
-                    window.setTimeout(function(){
-                        $('#status').css('color','black').html('');
-                    }, 5000);
-                }
-            },
-            error:function(xhr , exception){
-                ajax_error(xhr, exception);
-            }
-        })
+            })
+        }
+
+        //console.log('server1 = ' ,  );
+        jSave_setting(1);
+        jSave_setting(2);
+
     })
 
 
