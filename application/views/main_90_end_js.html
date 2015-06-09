@@ -48,33 +48,38 @@
 
 
 <script>
-	function change_btn_status(id_name,ret)
+	function change_btn_status(id_name,ret, server_num)
 	{
-		var btn_id = '#btn_id_' + id_name;
+		var btn_id = '#btn_id_' + id_name + '-' + server_num;
 		var btn_info = find_btn_info(btn_id);
-		//$(btn_id).val('[' +btn_info.nic + '] ' +  t.value);
-		//$(btn_id).val(btn_info.nic + '' );
-	
+        //console.log('btn_id =' , btn_id);
+
 		if(ret[id_name]['error'] == null)
+        {
 			$(btn_id).css('border' , '')
 			.css('background-color','#399630')
 			.attr('value',btn_info.nic + ' : OK');
+        }
 		else
-			$(btn_id).css('border' , '2px solid red')
-			.css('background-color','#0f0f0f')
-			.attr('value',btn_info.nic + ' : FAIL');
+        {
+            $(btn_id).css('border', '2px solid red')
+                    .css('background-color', '#0f0f0f')
+                    .attr('value', btn_info.nic + ' : FAIL');
+        }
 	}
 	
-	function update_ui_status(ret)
+	function update_ui_status(ret,server_num)
 	{
-		change_btn_status('db' , ret);
-		change_btn_status('app' , ret);
-		change_btn_status('vip1' , ret);
-		change_btn_status('vip2' , ret);
-		change_btn_status('disk1' , ret);
-		change_btn_status('disk2' , ret);
-		change_btn_status('server1' , ret);
-		change_btn_status('server2' , ret);
+		change_btn_status('db1' , ret , server_num);
+        change_btn_status('db2' , ret, server_num);
+        change_btn_status('app1' , ret, server_num);
+		change_btn_status('app2' , ret, server_num);
+		change_btn_status('vip1' , ret, server_num);
+		change_btn_status('vip2' , ret, server_num);
+		change_btn_status('disk1' , ret, server_num);
+		change_btn_status('disk2' , ret, server_num);
+		change_btn_status('server1' , ret, server_num);
+		change_btn_status('server2' , ret, server_num);
 	}
 
     window.setInterval(function(){
@@ -90,7 +95,8 @@
                 }
                 else
                 {
-					update_ui_status(ret);
+                    console.log(JSON.stringify(ret));
+					update_ui_status(ret,1);
                     //$('#status').css('color','black').html('check_status' + JSON.stringify(ret));
                     //console.dir(ret);
                     window.setTimeout(function(){
@@ -110,7 +116,7 @@
 	{
 		var t = event.target;
 		//console.log(t.id, t.value  );
-		var btn_id = '#btn_'+t.id;
+		var btn_id = '#btn_'+t.id + '_1';
 		var btn_info = find_btn_info(btn_id);
 		//$(btn_id).val('[' +btn_info.nic + '] ' +  t.value);
 		$(btn_id).val(btn_info.nic + ' : unknown');
@@ -128,11 +134,11 @@
 		{
 			return;
 		}
-		if(t.id =='id_db')
+		if(t.id =='id_db1' || t.id =='id_db2')
 		{
 			return;
 		}
-		if(t.id =='id_app')
+		if(t.id =='id_app1' || t.id =='id_app2')
 		{
 			return;
 		}
@@ -146,13 +152,13 @@
             data:$('#setting_form').serialize(),
             dataType:'json',
             success:function(ret){
-
                 if(ret.error)
                 {
                     $('#status').css('color','red').html(ret.error);
                 }
                 else
                 {
+                    console.log(JSON.stringify(ret));
                     $('#status').css('color','black').html('save ok : ' + JSON.stringify(ret));
                     window.setTimeout(function(){
                         $('#status').css('color','black').html('');

@@ -42,21 +42,40 @@
 					<input  name='vip2' id='id_vip2' type="text" class="form-control"
                             data-inputmask="'alias': 'ip'" data-mask value='<?=$vip2?>'/>
 				</div><!-- /.input group -->
+
                 <!-- text input -->
-                <label>DB</label>
-                <select name='db_type' class="form-control" id='pannel_type'>
+                <label>DB1</label>
+                <select name='db_type1' class="form-control" id='pannel_type'>
                     <option >ORACLE</option>
                     <!--
                     <option >MYSQL</option>
                     <option >MSSQL</option>
                     -->
                 </select>
+                <input name='db1' id='id_db1'  type="text" class="form-control" placeholder="user passwd localhost:1521"
+                        value="<?=$db1?>"/>
 
-                <input name='db' id='id_db'  type="text" class="form-control" placeholder="user passwd localhost:1521"
-                        value="<?=$db?>"/>
-                <label>App</label>
-                <input name='app' id='id_app' type="text" class="form-control" placeholder="Enter Exe name"
-                       value="<?=$app?>" />
+                <label>DB2</label>
+                <select name='db_type2' class="form-control" id='pannel_type'>
+                    <option >ORACLE</option>
+                    <!--
+                    <option >MYSQL</option>
+                    <option >MSSQL</option>
+                    -->
+                </select>
+                <!-- SYSTEM a localhost:1520 -->
+                <input name='db2' id='id_db2'  type="text" class="form-control" placeholder="user passwd localhost:1521"
+                       value="<?=$db2?>"/>
+
+
+
+                <label>App1</label>
+                <input name='app1' id='id_app1' type="text" class="form-control" placeholder="Enter Exe name"
+                       value="<?=$app1?>" />
+                <label>App2</label>
+                <input name='app2' id='id_app2' type="text" class="form-control" placeholder="Enter Exe name"
+                       value="<?=$app2?>" />
+
                 <!-- text input -->
                 <label>Disk 1</label>
                 <input name='disk1' id='id_disk1' type="text" class="form-control" placeholder="Path"

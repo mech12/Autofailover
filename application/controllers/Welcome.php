@@ -38,7 +38,6 @@
                     return;
                 }
 
-
                 $tbl_user = $this->Msetting->get_save_setting();
                 if ($tbl_user== null)
                 {
@@ -46,6 +45,7 @@
                     return;
                 }
                 $type = $tbl_user->type;
+                //print_r($tbl_user); return;
                 if($type=='Shared')
                     $this->Shared($tbl_user);
                 else
@@ -64,18 +64,6 @@
         {
             $ret = $this->Msetting->save_setting($args);
             JSON_OUTPUT(array('result' => $ret   ));
-
-/*
-            $id_app= "";
-            $id_db= "";
-            $id_disk1= "";
-            $id_disk2= "";
-            $id_server1= "";
-            $id_server2= "";
-            $id_vip1= "192.168.1.1";
-            $id_vip2= "192.168.1.2";
-*/
-        
         }
 
 		public function Mirroed($tbl_user)
@@ -152,24 +140,37 @@
             $arg = jARG();
             $ret['arg'] = $arg;
 
-            if($arg['db_type']=='ORACLE')
+            if($arg['db_type1']=='ORACLE')
             {
-                $db = $arg['db'];
+                $db = $arg['db1'];
                 if(isset($db) && strlen($db)>0)
                 {
 
                     //$ret['db'] = $this->_db_check_oracle('SYSTEM a localhost:1521');
-                    $ret['db'] = $this->_db_check_oracle($db);
+                    $ret['db1'] =  array('result'=>'ok');//$this->_db_check_oracle($db);
                 }
                 else
-                    $ret['db'] = array('error' => 'need setup');
+                    $ret['db1'] = array('error' => 'need setup');
+            }
+            if($arg['db_type2']=='ORACLE')
+            {
+                $db = $arg['db2'];
+                if(isset($db) && strlen($db)>0)
+                {
+
+                    //$ret['db'] = $this->_db_check_oracle('SYSTEM a localhost:1521');
+                    $ret['db2'] = array('result'=>'ok');//$this->_db_check_oracle($db);
+                }
+                else
+                    $ret['db2'] = array('error' => 'need setup');
             }
 
             $ret['disk1'] = _check_disk($arg['disk1']);
             $ret['disk2'] = _check_disk($arg['disk2']);
 
-            $ret['app'] = _check_process($arg['app']);
-	
+            $ret['app1'] = _check_process($arg['app1']);
+            $ret['app2'] = _check_process($arg['app2']);
+
 			$ret['server1'] = _check_ping( $arg['server1'] );
 			$ret['server2'] = _check_ping( $arg['server2'] );
 			$ret['vip1'] = _check_ping( $arg['vip1'] );
