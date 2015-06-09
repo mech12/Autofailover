@@ -96,7 +96,7 @@
                 success:function(ret){
                     if(ret.error)
                     {
-                        $('#status').css('color','red').html(ret.error);
+                        $('#status' + server_num).css('color','red').html('#status' + server_num + ' : ' + ret.error);
                     }
                     else
                     {
@@ -105,7 +105,7 @@
                         //$('#status').css('color','black').html('check_status' + JSON.stringify(ret));
                         //console.dir(ret);
                         window.setTimeout(function(){
-                            $('#status').css('color','black').html('');
+                            $('#status' + server_num).css('color','black').html('');
                         }, 3500);
                     }
                 },
@@ -174,14 +174,14 @@
                 success:function(ret){
                     if(ret.error)
                     {
-                        $('#status').css('color','red').html(ret.error);
+                        $('#status' + server_num).css('color','red').html('#status' + server_num + ' : ' +ret.error);
                     }
                     else
                     {
                         console.log(JSON.stringify(ret));
-                        $('#status').css('color','black').html(id + ' save ok : ' + JSON.stringify(ret));
+                        $('#status' + server_num).css('color','black').html(id + ' save ok : ' + JSON.stringify(ret));
                         window.setTimeout(function(){
-                            $('#status').css('color','black').html('');
+                            $('#status' + server_num).css('color','black').html('');
                         }, 5000);
                     }
                 },
