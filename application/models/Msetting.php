@@ -11,7 +11,7 @@ class Msetting extends CI_Model {
     public function save_setting($args) {
         $this->load->helper('file');
         $json = json_encode($args);
-        if ( ! write_file('./autofailover_save_setting.json',  $json))
+        if ( ! write_file('../autofailover_save_setting.json',  $json))
         {
             return $args;
         }
@@ -45,7 +45,7 @@ class Msetting extends CI_Model {
     public function get_save_setting()
     {
         $this->load->helper('file');
-        $string = read_file('./autofailover_save_setting.json');
+        $string = read_file('../autofailover_save_setting.json');
         if($string===false ||  strlen($string) ==0)
         {
             $ret =array(

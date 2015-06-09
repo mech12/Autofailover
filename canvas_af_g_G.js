@@ -131,21 +131,3 @@ function get_shared1_image_list()
 	
 }
 
-
-function get_img_shared_bg(g_G)
-{
-	
-	var img_list =
-	[
-	{
-		name : 'bg_share2',
-		src : "img/bg_share2.png",
-		
-		draw_list : [
-		{is_draw : true , x : 50,y : 50,w : g_G.W , h : g_G.H,},
-		]
-	},
-	];
-	
-	return img_list;
-}

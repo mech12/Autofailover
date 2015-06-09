@@ -123,7 +123,7 @@ function main_redraw(g_G)
 {
 	calc_backgroud_size(g_G);
 	clearCanvas(g_G.W, g_G.H);
-	draw_background(g_G , g_G.W , g_G.H , "#f1f100" );
+	draw_background(g_G , g_G.W , g_G.H , "#ffffff" );//배경색
 
 	g_G.line_list.forEach(function(line){
 		draw_lineV(g_G, line.x, line.y, line.x2, line.y2 ,line.color , line.width);
