@@ -156,7 +156,8 @@
                 {
 
                     //$ret['db'] = $this->_db_check_oracle('SYSTEM a localhost:1521');
-                    $ret['db1'] =  array('result'=>'ok');//$this->_db_check_oracle($db);
+                    $ret['db1'] = $this->_db_check_oracle($db);
+                    //$ret['db1'] =  array('result'=>'ok');
                 }
                 else
                     $ret['db1'] = array('error' => 'need setup');
@@ -166,9 +167,9 @@
                 $db = $arg['db2'];
                 if(isset($db) && strlen($db)>0)
                 {
-
                     //$ret['db'] = $this->_db_check_oracle('SYSTEM a localhost:1521');
-                    $ret['db2'] = array('result'=>'ok');//$this->_db_check_oracle($db);
+                    //$ret['db2'] = array('result'=>'ok');//$this->_db_check_oracle($db);
+                    $ret['db2'] = $this->_db_check_oracle($db);
                 }
                 else
                     $ret['db2'] = array('error' => 'need setup');
