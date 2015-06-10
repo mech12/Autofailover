@@ -7,8 +7,8 @@ var g_drive_offset = 10;
 
 var g_status_btn_list_shared =
 [
-    {nic:'SV1',id:'#btn_id_server1-1', x:g_posLeft, y:80},
-    {nic:'SV2' ,id:'#btn_id_server2-1', x:g_posLeft2, y:80},
+    {nic:'Server1',id:'#btn_id_server1-1', x:g_posLeft+5, y:80},
+    //{nic:'Server2' ,id:'#btn_id_server2-1', x:g_posLeft2, y:80},
 
     {nic:'DISK1' ,id:'#btn_id_disk1-1', x:g_posLeft, y:65},
     {nic:'DISK2' ,id:'#btn_id_disk2-1', x:g_posLeft2, y:65},
@@ -23,8 +23,8 @@ var g_status_btn_list_shared =
     {nic:'APP2' ,id:'#btn_id_app2-1', x:g_posLeft2, y:50},
 
 
-    {nic:'SV1',id:'#btn_id_server1-2', x:g_posRight2, y:80},
-    {nic:'SV2' ,id:'#btn_id_server2-2', x:g_posRight, y:80},
+    //{nic:'Server1',id:'#btn_id_server1-2', x:g_posRight2, y:80},
+    {nic:'Server2' ,id:'#btn_id_server2-2', x:g_posRight-5, y:80},
 
     {nic:'DISK1' ,id:'#btn_id_disk1-2', x:g_posRight2, y:65},
     {nic:'DISK2' ,id:'#btn_id_disk2-2', x:g_posRight, y:65},

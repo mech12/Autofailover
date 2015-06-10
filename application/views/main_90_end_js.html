@@ -43,6 +43,7 @@
 	{
 		var btn_id = '#btn_id_' + id_name + '-' + server_num;
 		var btn_info = find_btn_info(btn_id);
+        if(btn_info==null) return;
         //console.log('btn_id =' , btn_id);
 
 		if(ret[id_name]['error'] == null)
@@ -59,7 +60,17 @@
                     .hide();
         }
 	}
-	
+    function hide_btn_status(id_name , server_num)
+    {
+        var btn_id = '#btn_id_' + id_name + '-' + server_num;
+        var btn_info = find_btn_info(btn_id);
+        if(btn_info==null) return;
+        //console.log('btn_id =' , btn_id);
+        $(btn_id).css('border', '2px solid red')
+                .css('background-color', '#0f0f0f')
+                .attr('value', btn_info.nic + ' : FAIL')
+                .hide();
+    }
 	function update_ui_status(ret,server_num)
 	{
 		change_btn_status('db1' , ret , server_num);
@@ -74,12 +85,42 @@
 		change_btn_status('server2' , ret, server_num);
 	}
 
+    function hide_all(server_num)
+    {
+        hide_btn_status('db1'  , server_num);
+        hide_btn_status('db2' , server_num);
+        hide_btn_status('app1' , server_num);
+        hide_btn_status('app2' , server_num);
+        hide_btn_status('vip1' , server_num);
+        hide_btn_status('vip2' , server_num);
+        hide_btn_status('disk1' , server_num);
+        hide_btn_status('disk2' , server_num);
+        hide_btn_status('server1' , server_num);
+        hide_btn_status('server2' , server_num);
+    }
+
+    function update_side_menu_text(arg)
+    {
+        return;
+        Object.keys(arg).forEach(function(key)
+        {
+            var btn_id = '#id_' + key;
+
+            if($(btn_id).val() != arg[key])
+            {
+                //$(btn_id).attr('value', arg[key]);
+                $(btn_id).val(arg[key]);
+                //console.dir($(btn_id));
+            }
+        });
+    }
+
     window.setInterval(function(){
 
-        function jSetInterval(server_num)
+        function jServer_check_status(server_num)
         {
             var id = '#id_server' + server_num;
-            server_url = $(id).attr('value');
+            var server_url = $(id).val(); //$(id).attr('value');
 
             $.ajax({
                 url: 'http://' + server_url + '/index.php/welcome/check_status',
@@ -89,11 +130,15 @@
                     if(ret.error)
                     {
                         $('#status' + server_num).css('color','red').html('#status' + server_num + ' : ' + ret.error);
+
+                        hide_all(server_num);
                     }
                     else
                     {
-                        //console.log(JSON.stringify(ret));
+                        console.log(JSON.stringify(ret));
                         update_ui_status(ret,server_num);
+
+                        update_side_menu_text(ret.arg);
                         //$('#status').css('color','black').html('check_status' + JSON.stringify(ret));
                         //console.dir(ret);
                         window.setTimeout(function(){
@@ -101,13 +146,15 @@
                         }, 6000);
                     }
                 },
-                error:function(xhr , exception){
+                error:function(xhr , exception)
+                {
                     ajax_error(xhr, exception,server_num);
+                    hide_all(server_num);
                 }
             });
         }
-        jSetInterval(1);
-        jSetInterval(2);
+        jServer_check_status(1);
+        jServer_check_status(2);
 
     }, 5100);
 
@@ -187,26 +234,26 @@
         jSave_setting(1);
         jSave_setting(2);
 
-    })
+    });
 
     function ajax_error(jqXHR, exception,server_num) {
         console.log('ajax_error = ' , exception , 'server_num= ' , server_num);
         console.dir(jqXHR);
 
         if (jqXHR.status === 0) {
-            $('#status' + server_num).css('color','red').html('Not connect.\n Verify Network.');
+            $('#status' + server_num).css('color','red').html('server_num= ' +  server_num + ' Not connect. Verify Network.');
         } else if (jqXHR.status == 404) {
-            $('#status' + server_num).css('color','red').html('Requested page not found. [404]');
+            $('#status' + server_num).css('color','red').html('server_num= ' +  server_num + ' Requested page not found. [404]');
         } else if (jqXHR.status == 500) {
-            $('#status' + server_num).css('color','red').html('Internal Server Error [500].');
+            $('#status' + server_num).css('color','red').html('server_num= ' +  server_num + ' Internal Server Error [500].');
         } else if (exception === 'parsererror') {
-            $('#status' + server_num).css('color','red').html('Requested JSON parse failed.');
+            $('#status' + server_num).css('color','red').html('server_num= ' +  server_num + ' Requested JSON parse failed.');
         } else if (exception === 'timeout') {
-            $('#status' + server_num).css('color','red').html('Time out error.');
+            $('#status' + server_num).css('color','red').html('server_num= ' +  server_num + ' Time out error.');
         } else if (exception === 'abort') {
-            $('#status' + server_num).css('color','red').html('Ajax request aborted.');
+            $('#status' + server_num).css('color','red').html('server_num= ' +  server_num + ' Ajax request aborted.');
         } else {
-            $('#status' + server_num).css('color','red').html('Uncaught Error.\n' + jqXHR.responseText);
+            $('#status' + server_num).css('color','red').html('server_num= ' +  server_num + ' Uncaught Error.' + jqXHR.responseText);
         }
     }
 

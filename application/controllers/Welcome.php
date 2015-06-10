@@ -7,6 +7,7 @@
         function __construct() {
             parent::__construct();
             header('Access-Control-Allow-Origin:*');
+            $this->load->model("Msetting");
 
         }
 
@@ -28,7 +29,6 @@
 		public function index()
 		{
 
-            $this->load->model("Msetting");
 
             $ret = array();
             try {
@@ -145,7 +145,8 @@
         public function check_status()
         {
             $ret = array();
-            $arg = jARG();
+            //$arg = jARG();
+            $arg = (array)$this->Msetting->get_save_setting();
             $ret['arg'] = $arg;
 
             if($arg['db_type1']=='ORACLE')
