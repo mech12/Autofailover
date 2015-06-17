@@ -190,4 +190,13 @@
             JSON_OUTPUT($ret);
 
         }
+
+        function get_var()
+        {
+            echo '$_SERVER<p>';
+            print_r($_SERVER);
+
+            echo 'HTTP_USER_AGENT <p>';
+            var_dump(PHP_OS);
+        }
 	}

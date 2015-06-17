@@ -16,71 +16,7 @@
 		jL( json_encode(jARG()) ,'T_RQ');
 		return array( 'env'=>$_ENV , 'server'=> $mode.':'.$name, 'eCmd' => basename($file, '.php')  .':'. $func);
 	}
-	
-	function rank_to_int($rank)
-	{
-		if($rank=='S') return 1;
-		if($rank=='A') return 2;
-		if($rank=='B') return 3;
-		return 4;
-	}
-	
-	// 챌린지 등급에 대한 번호로 스트링 구분자를 리턴.
-	function rank_to_string($rank)
-	{
-		jCHECK($rank > 0 && $rank <=4 , ' error $rank > 0 && $rank <=4 : rank = ' . $rank);
-		
-		if($rank==1) return 'S';
-		if($rank==2) return 'A';
-		if($rank==3) return 'B';
-		return 'C';
-	}
-	
-	function j_find_csv_by_func($csv ,$arg1 , $func )
-	{
-		foreach($csv as $row)
-		{
-			if( $func($row,$arg1) == true) return $row;
-		}
-		return null;
-	}
-	
-	function j_content_load($name)
-	{
-		get_instance()->load->helper("ContentDB");
-		$csv = content_load($name);
-		jCHECK( ! is_null($csv) , 'ContentsDB is not found : ' . $name);
-		return $csv;
-	}
-	
-	// j_content_load 와 j_find_csv_by_func를 합친 함수.
-	function j_content_find($name , $arg1 , $func)
-	{
-		get_instance()->load->helper("ContentDB");
-		$csv = content_load($name);
-		jCHECK( ! is_null($csv) , 'ContentsDB is not found : ' . $name);
-		
-		foreach($csv as $row)
-		{
-			if( $func($row,$arg1) == true )
-            return $row;
-		}
-		return null;
-	}
-	// j_content_load 와 j_find_csv_by_func를 합친 함수.
-	function j_content_find2($name ,  $func)
-	{
-		get_instance()->load->helper("ContentDB");
-		$csv = content_load($name);
-		jCHECK( ! is_null($csv) , 'ContentsDB is not found : ' . $name);
-		
-		foreach($csv as $row)
-		{
-			if( $func($row) == true )
-            return $row;
-		}
-		return null;
-	}
+
 	
 	
 	function jSESSION_CHECK($session_data_name)
@@ -237,50 +173,7 @@
 		log_message($level , $ft.print_r($value, true));
 	}
 	
-	
-	function get_next_level_exp($level)
-	{
-		jCHECK($level > 0 , '_get_next_level_exp level is invalid = ' . $level);
-		++$level;
-		$csv = j_content_load('file_Sys_Level.ansi');
-		foreach($csv as $row)
-		{
-			if( $row['level'] == $level) return $row['exp_total'];
-		}
-		return $csv[0]['exp_total'];
-	}
-	
-	
-	
-	function CSV_NpcData($csv_npc_data)
-	{
-		$row = j_content_find2('NpcData' , function($row) use($csv_npc_data) {
-			if( $row['index'] <= $csv_npc_data) return true;
-		});
-		jCHECK(isset($row) , ' CSV_NpcData find fail : $csv_npc_data = ' . $csv_npc_data);
-		return $row;
-	}
-	
-	
-	function CSV_Sys_NpcRelation($npc_group)
-	{
-		$row = j_content_find2('file_Sys_NpcRelation.ansi' , function($row) use($npc_group) {
-			if( $row['group'] == $npc_group) return true;
-		});
-		jCHECK(isset($row) , ' file_Sys_NpcRelation find fail : $npc_group = ' . $npc_group);
-		return $row;
-	}
-	
-	
-	function CSV_Sys_NpcParts_EmotionGift($emotion_grade)
-	{
-		$row = j_content_find2('file_Sys_NpcParts_EmotionGift.ansi' , function($row) use($emotion_grade) {
-			if( $row['emotion_grade'] == $emotion_grade) return true;
-		});
-		jCHECK(isset($row) , ' file_Sys_NpcParts_EmotionGift find fail : $emotion_grade = ' . $emotion_grade);
-		return $row;
-	}
-	
+
 	function ping($host, $port, $timeout) { 
 		$tB = microtime(true); 
 		$fP = fSockOpen($host, $port, $errno, $errstr, $timeout); 
@@ -307,39 +200,79 @@
         return $result;
     }
 
+    function is_windown()
+    {
+        return strpos(PHP_OS , 'WIN') !==false;
+    }
+
     function _check_disk($disk)
     {
-        exec('dir '.$disk , $ret);
+        if(is_windown())
+        {
+            exec('dir '.$disk , $ret);
+        }
+        else
+        {
+            exec('ls '.$disk , $ret);
+        }
         if(count($ret)==0 ) return array('error'=>$disk);
         return array('result'=>$disk);
     }
 
-    function _check_process($app)
+    function is_exist_app($proc_list , $_app)
     {
-        exec('tasklist' , $proc_list);
         foreach($proc_list as $p)
         {
-            if(strpos($p , $app) !== false)
-                return array('result' => $app);
+            if(strpos($p , $_app) !== false)
+                return true;
         }
-        return array('error'=>$app);
+        return false;
     }
 
+    function _check_process($app)
+    {
+        if(is_windown()) {
+            exec('tasklist', $proc_list);
+        }
+        else
+        {
+            exec('ps aux', $proc_list);
+        }
+        $app_arr = array();
+        if(strpos($app,';')!==false)
+        {
+            $app_arr = explode(';' , $app , 1000);
+        }
+        else
+        {
+            array_push( $app_arr , $app);
+        }
+
+        foreach($app_arr as $_app)
+        {
+            if(is_exist_app($proc_list , $_app) ==false)
+                return array('error'=>$_app);
+        }
+        return array('result'=>$app);
+
+    }
 
 	function _check_ping($server1)
 	{
 		if(! isset($server1) || strlen($server1)<=0) return array('error' => 'need setup');
         //$r = system('ping -n 1 2>&1' . $server1);
-        exec('ping -n 1 2>&1' . $server1 , $r);
-        $r = implode($r);
 
-        //echo ($r);
-        //echo "=======================================================================================";
-        if( strpos($r , 'TTL') === false && strpos($r , 'ms') === false)
-		return array('error'=>$server1);
-		else
-		return array('result'=>$server1);
-
+        if(is_windown()) {
+            exec('ping -n 1 2>&1' . $server1 , $r);
+            $r = implode($r);
+            return (strpos($r, 'TTL') === false && strpos($r, 'ms') === false) ? array('error'=>$server1) : array('result'=>$server1);
+        }
+        else
+        {
+            exec('ping -c 1 2>&1' . $server1 , $r);
+            $r = implode($r);
+            return (strpos($r, 'transmitted') === false) ? array('error'=>$server1) : array('result'=>$server1);
+        }
 	}
 
 
