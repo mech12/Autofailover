@@ -234,6 +234,8 @@
 
     function _check_process($app)
     {
+        if($app=='NULL') return array('error',$app);
+
         if(is_windown()) {
             exec('tasklist', $proc_list);
         }
@@ -303,7 +305,7 @@ function _check_virtual_ip($vip)
 
 function _check_ping1234($server1)
 {
-    if(! isset($server1) || strlen($server1)<=0) return array('error' => 'need setup');
+    if(! isset($server1) || strlen($server1)<=0 || $server1=='NULL' ) return array('error' => 'need setup');
 
     //$r = php_ping($server1);
     //$r = shell_exec('ping -n 1 2>&1' . $server1);
