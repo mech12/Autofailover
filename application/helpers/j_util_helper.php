@@ -207,6 +207,9 @@
 
     function _check_disk($disk)
     {
+        if($disk=='NULL')
+            return array('error'=>$disk);
+
         if(is_windown())
         {
             exec('dir '.$disk , $ret);
@@ -259,9 +262,11 @@
 
 	function _check_ping($server1)
 	{
-		if(! isset($server1) || strlen($server1)<=0) return array('error' => 'need setup');
+		if(! isset($server1) || strlen($server1)<=0 || $server1=='NULL') return array('error' => 'need setup');
         //$r = system('ping -n 1 2>&1' . $server1);
 
+        $server = explode(':', $server1 , 10);
+        $server1 = $server[0];
         if(is_windown()) {
             exec('ping -n 1 2>&1' . $server1 , $r);
             $r = implode($r);
@@ -274,6 +279,25 @@
             return (strpos($r, 'transmitted') === false) ? array('error'=>$server1) : array('result'=>$server1);
         }
 	}
+
+
+function _check_virtual_ip($vip)
+{
+    $ret = _check_ping( $vip );
+    if(isset($ret['error'])) return $ret;
+
+    $r =null;
+    if(is_windown()) {
+        exec('ipconfig' , $r);
+    }
+    else
+    {
+        exec('ifconfig', $r);
+    }
+    $r = implode($r);
+    return (strpos($r, $vip) === false ) ? array('error'=>$vip) : array('result'=>$vip);
+
+}
 
 
 

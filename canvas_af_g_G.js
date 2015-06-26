@@ -47,7 +47,7 @@ function find_btn_info(id)
 
 function get_shared1_line_list(g_G)
 {
-	if(g_G.type_pannel=='Mirroed') 
+	if(g_G.type_pannel=='Mirrored')
 	{
 		var line_list = 
 		[
@@ -77,7 +77,7 @@ function get_shared1_line_list(g_G)
 
 function get_shared1_image_list()
 {
-	if(g_G.type_pannel=='Mirroed') 
+	if(g_G.type_pannel=='Mirrored')
 	{
 		var img_list =
 		[

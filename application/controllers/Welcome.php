@@ -57,7 +57,7 @@
                 if($type=='Shared')
                     $this->Shared($tbl_user);
                 else
-                    $this->Mirroed($tbl_user);
+                    $this->Mirrored($tbl_user);
 
             }
             catch(Exception $e)
@@ -74,7 +74,7 @@
             JSON_OUTPUT(array('result' => $ret   ));
         }
 
-		public function Mirroed($tbl_user)
+		public function Mirrored($tbl_user)
         {
 
             echo '<!DOCTYPE html>';
@@ -183,10 +183,11 @@
 
 			$ret['server1'] = _check_ping( $arg['server1'] );
 			$ret['server2'] = _check_ping( $arg['server2'] );
-			$ret['vip1'] = _check_ping( $arg['vip1'] );
-			$ret['vip2'] = _check_ping( $arg['vip2'] );
 
-            //{"type":"Mirroed","server1":"localhost","server2":"google.co.kr","vip1":"192.168.0.10","vip2":"192.168.0.11","db_type":"ORACLE","db":"SYSTEM a localhost:152","app":"notepad++.exe","disk1":"c:\\","disk2":"d:\\"
+            $ret['vip1'] = _check_virtual_ip($arg['vip1']);
+            $ret['vip2'] = _check_virtual_ip($arg['vip2']);
+
+            //{"type":"Mirrored","server1":"localhost","server2":"google.co.kr","vip1":"192.168.0.10","vip2":"192.168.0.11","db_type":"ORACLE","db":"SYSTEM a localhost:152","app":"notepad++.exe","disk1":"c:\\","disk2":"d:\\"
             JSON_OUTPUT($ret);
 
         }
