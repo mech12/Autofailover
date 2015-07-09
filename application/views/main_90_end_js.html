@@ -51,9 +51,13 @@
 		}	
 		if(ret[id_name]['error'] == null)
         {
+			var nic = btn_info.nic;
+			if(ret.is_window==true && nic=='APP2')
+				nic = 'SERVICE';
+				
 			$(btn_id).css('border' , '')
 			.css('background-color','#399630')
-			.attr('value',btn_info.nic)
+			.attr('value',nic)
             .show();
         }
 		else

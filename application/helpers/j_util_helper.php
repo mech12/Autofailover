@@ -255,14 +255,18 @@
             array_push( $app_arr , $app);
         }
 		
+		$svc_ret_list = array();
 		foreach($app_arr as $_app)
         {
+			$proc_list='';
 			exec('sc query ' . $_app , $proc_list);
-			
-            if(is_run_service($proc_list , $_app) ==false)
+			$result  = is_run_service($proc_list , $_app);
+			array_push($svc_ret_list , array($_app=>$result, 'debug'=> $proc_list));
+            if($result ==false)
                 return array('error'=>$_app);
         }
-		return array('result'=>$app);
+		return array('result'=>$app,'svc_ret_list'=>$svc_ret_list);
+		//return array('result'=>$app);
 	}
 
     function _check_process($app)

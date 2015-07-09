@@ -208,6 +208,8 @@
             $ret['vip2'] = _check_virtual_ip($arg['vip2']);
 
             //{"type":"Mirrored","server1":"localhost","server2":"google.co.kr","vip1":"192.168.0.10","vip2":"192.168.0.11","db_type":"ORACLE","db":"SYSTEM a localhost:152","app":"notepad++.exe","disk1":"c:\\","disk2":"d:\\"
+			
+			$ret['is_window'] = is_windown();
             JSON_OUTPUT($ret);
 
         }

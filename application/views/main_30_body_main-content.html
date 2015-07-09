@@ -14,7 +14,11 @@
             <input id='btn_id_db2-1' class="round_button my_pos" type="button" value="DB2 : ?" />
 
             <input id='btn_id_app1-1' class=" round_button my_pos" type="button" value="APP1 : ?" />
+			<?php if ($is_window == true): ?>
+			<input id='btn_id_app2-1' class=" round_button my_pos" type="button" value="SERVICE:?" />
+			<?php else: ?>			
 			<input id='btn_id_app2-1' class=" round_button my_pos" type="button" value="APP2 : ?" />
+			<?php endif; ?>
 
 			<input id='btn_id_server1-1' class="round_button my_pos" type="button" value="Server1 : ?" />
 
@@ -29,7 +33,12 @@
             <input id='btn_id_db2-2' class="round_button my_pos" type="button" value="DB2 : ?" />
 
             <input id='btn_id_app1-2' class=" round_button my_pos" type="button" value="APP1 : ?" />
+			<?php if ($is_window == true): ?>
+            <input id='btn_id_app2-2' class=" round_button my_pos" type="button" value="SERVICE:?" />
+			<?php else: ?>			
             <input id='btn_id_app2-2' class=" round_button my_pos" type="button" value="APP2 : ?" />
+			<?php endif; ?>
+			
 
             <input id='btn_id_server2-2' class="round_button my_pos" type="button" value="Server2 : ?" />
 
