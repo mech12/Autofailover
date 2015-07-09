@@ -207,8 +207,8 @@
 
     function _check_disk($disk)
     {
-        if($disk=='NULL')
-            return array('error'=>$disk);
+        if(is_null($disk) || strlen($disk)==0 || $disk=='NULL')
+            return array('error'=>'need setup');
 
         if(is_windown())
         {
@@ -231,10 +231,43 @@
         }
         return false;
     }
+	
+	
+	function is_run_service($proc_list , $_app)
+    {
+        foreach($proc_list as $p)
+        {
+            if(strpos($p , 'RUNNING') !== false)
+                return true;
+        }
+        return false;
+    }
+
+	function _check_WIN_SERVICE($app)
+	{
+        $app_arr = array();
+        if(strpos($app,';')!==false)
+        {
+            $app_arr = explode(';' , $app , 1000);
+        }
+        else
+        {
+            array_push( $app_arr , $app);
+        }
+		
+		foreach($app_arr as $_app)
+        {
+			exec('sc query ' . $_app , $proc_list);
+			
+            if(is_run_service($proc_list , $_app) ==false)
+                return array('error'=>$_app);
+        }
+		return array('result'=>$app);
+	}
 
     function _check_process($app)
     {
-        if($app=='NULL') return array('error',$app);
+        if(is_null($app) || strlen($app)==0 || $app=='NULL') return array('error','need setup');
 
         if(is_windown()) {
             exec('tasklist', $proc_list);
@@ -264,7 +297,7 @@
 
 	function _check_ping($server1)
 	{
-		if(! isset($server1) || strlen($server1)<=0 || $server1=='NULL') return array('error' => 'need setup');
+		if(is_null($server1) || strlen($server1)<=0 || $server1=='NULL') return array('error' => 'need setup');
         //$r = system('ping -n 1 2>&1' . $server1);
 
         $server = explode(':', $server1 , 10);
@@ -298,47 +331,6 @@ function _check_virtual_ip($vip)
     }
     $r = implode($r);
     return (strpos($r, $vip) === false ) ? array('error'=>$vip) : array('result'=>$vip);
-
-}
-
-
-
-function _check_ping1234($server1)
-{
-    if(! isset($server1) || strlen($server1)<=0 || $server1=='NULL' ) return array('error' => 'need setup');
-
-    //$r = php_ping($server1);
-    //$r = shell_exec('ping -n 1 2>&1' . $server1);
-    $r = system('ping -n 1 2>&1' . $server1);
-    //exec('ping -n 1 2>&1' . $server1 , $r);
-    //print_r($r);
-    //echo "=======================================================================================";
-    //$r = implode($r);
-    //$r = iconv( "euckr","utf8", $r);
-    //$r = iconv("UTF-8", "euc-kr", $r);
-    print_r($r);
-    echo "=======================================================================================";
-
-    //return array('error'=>$r);
-
-    //$r = passthru('ping -n 1 2>&1' . $server1);
-    /*
-    while (@ ob_end_flush()); // end all output buffers if any
-    $proc = popen('ping -n 1 2>&1' . $server1, 'r');
-    $r ='';
-    while (!feof($proc))
-    {
-        $a = fread($proc, 4096);
-        $r = $r . $a;
-        //echo fread($proc, 4096);
-        @ flush();
-    }
-    */
-
-    if( strpos($r , 'TTL') === false && strpos($r , 'ms') === false)
-        return array('error'=>$r);
-    else
-        return array('result'=>$r);
 
 }
 

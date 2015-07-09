@@ -49,11 +49,14 @@
                 $tbl_user = $this->Msetting->get_save_setting();
                 if ($tbl_user== null)
                 {
-                    $this->Shared(jARG());
+					$tbl_user = jARG();
+					$tbl_user['is_window'] = is_windown();
+                    $this->Shared($tbl_user);
                     return;
                 }
                 $type = $tbl_user->type;
                 //print_r($tbl_user); return;
+				$tbl_user->is_window = is_windown();
                 if($type=='Shared')
                     $this->Shared($tbl_user);
                 else
@@ -162,6 +165,11 @@
                 else
                     $ret['db1'] = array('error' => 'need setup');
             }
+			else
+			{
+				$ret['db1'] = array('error' => 'need setup');
+			}
+			
             if($arg['db_type2']=='ORACLE')
             {
                 $db = $arg['db2'];
@@ -174,12 +182,24 @@
                 else
                     $ret['db2'] = array('error' => 'need setup');
             }
+			else
+			{
+				$ret['db2'] = array('error' => 'need setup');
+			}
 
             $ret['disk1'] = _check_disk($arg['disk1']);
             $ret['disk2'] = _check_disk($arg['disk2']);
 
             $ret['app1'] = _check_process($arg['app1']);
-            $ret['app2'] = _check_process($arg['app2']);
+			
+			if(is_windown()) 
+			{
+				$ret['app2'] = _check_WIN_SERVICE($arg['app2']);
+			}
+			else
+			{
+				$ret['app2'] = _check_process($arg['app2']);
+			}
 
 			$ret['server1'] = _check_ping( $arg['server1'] );
 			$ret['server2'] = _check_ping( $arg['server2'] );

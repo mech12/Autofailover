@@ -46,6 +46,7 @@
                 <!-- text input -->
                 <label>DB1</label>
                 <select name='db_type1' class="form-control" id='pannel_type'>
+                    <option >NULL</option>
                     <option >ORACLE</option>
                     <!--
                     <option >MYSQL</option>
@@ -57,6 +58,7 @@
 
                 <label>DB2</label>
                 <select name='db_type2' class="form-control" id='pannel_type'>
+                    <option >NULL</option>
                     <option >ORACLE</option>
                     <!--
                     <option >MYSQL</option>
@@ -68,13 +70,22 @@
                        value="<?=$db2?>"/>
 
 
-
-                <label>App1</label>
-                <input name='app1' id='id_app1' type="text" class="form-control" placeholder="Enter Exe name"
-                       value="<?=$app1?>" />
-                <label>App2</label>
-                <input name='app2' id='id_app2' type="text" class="form-control" placeholder="Enter Exe name"
-                       value="<?=$app2?>" />
+				<?php if ($is_window == true): ?>
+					<label>App</label>
+					<input name='app1' id='id_app1' type="text" class="form-control" placeholder="Enter Exe name(;)"
+						   value="<?=$app1?>" />
+					<label>Service</label>
+					<input name='app2' id='id_app2' type="text" class="form-control" placeholder="Enter Service name (;)"
+						   value="<?=$app2?>" />
+				
+				<?php else: ?>
+					<label>App1</label>
+					<input name='app1' id='id_app1' type="text" class="form-control" placeholder="Enter Exe name(;)"
+						   value="<?=$app1?>" />
+					<label>App2</label>
+					<input name='app2' id='id_app2' type="text" class="form-control" placeholder="Enter Exe name(;)"
+						   value="<?=$app2?>" />
+				<?php endif; ?>
 
                 <!-- text input -->
                 <label>Disk 1</label>
