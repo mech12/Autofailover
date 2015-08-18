@@ -255,6 +255,8 @@
             array_push( $app_arr , $app);
         }
 		
+
+		
 		$svc_ret_list = array();
 		foreach($app_arr as $_app)
         {
@@ -265,8 +267,8 @@
             if($result ==false)
                 return array('error'=>$_app);
         }
-		return array('result'=>$app,'svc_ret_list'=>$svc_ret_list);
-		//return array('result'=>$app);
+		//return array('result'=>$app,'svc_ret_list'=>$svc_ret_list);
+		return array('result'=>$app);
 	}
 
     function _check_process($app)
