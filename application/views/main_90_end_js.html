@@ -49,7 +49,8 @@
 			console.error('btn_info==null ' + id_name + ' '  + btn_id);
 			return;
 		}	
-		if(ret[id_name]['error'] == null && ret[id_name]['result'].length!=0)
+		if(ret[id_name] && ret[id_name]['error'] == null 
+		&& (ret[id_name]['result']!=null && ret[id_name]['result'].length!=0) )
         {
 			var nic = btn_info.nic;
 			if(ret.is_window==true && nic=='APP2')
